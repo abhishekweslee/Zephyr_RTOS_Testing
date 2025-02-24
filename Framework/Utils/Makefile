@@ -46,6 +46,7 @@ $(WEST): $(VENV_DIR)
 install_sdk:
 	@echo "Installing Zephyr SDK..."
 	cd $(ZEPHYR_DIR)/zephyr && $(WEST3) sdk install
+	sudo chmod -R 777 $(ZEPHYR_DIR)
 # Clean Up
 clean:
 	rm -rf $(ZEPHYR_DIR)
