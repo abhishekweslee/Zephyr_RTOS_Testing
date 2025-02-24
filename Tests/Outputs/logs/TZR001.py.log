@@ -1,0 +1,27 @@
+2025-02-24 18:49:31 - TZR001 - INFO - Builder initialized with toolchain: Framework/Utils/zephyrproject/.venv/bin/west, project: Framework/Utils/zephyrproject/zephyr/TZR001, bin file: Framework/Utils/zephyrproject/zephyr/build/zephyr/zephyr.bin, board: nucleo_f401re
+2025-02-24 18:49:31 - TZR001 - INFO - Executing build command: Framework/Utils/zephyrproject/.venv/bin/west build -p always -b nucleo_f401re Framework/Utils/zephyrproject/zephyr/TZR001
+2025-02-24 18:49:31 - TZR001 - INFO - Attempt 1: Executing command Framework/Utils/zephyrproject/.venv/bin/west build -p always -b nucleo_f401re Framework/Utils/zephyrproject/zephyr/TZR001
+2025-02-24 18:49:31 - TZR001 - WARNING - Pattern not found, retrying command...
+2025-02-24 18:49:31 - TZR001 - INFO - Attempt 2: Executing command Framework/Utils/zephyrproject/.venv/bin/west build -p always -b nucleo_f401re Framework/Utils/zephyrproject/zephyr/TZR001
+2025-02-24 18:49:31 - TZR001 - ERROR - Error: Expected output not found after retrying.
+2025-02-24 18:49:36 - TZR001 - INFO - Executing flash command: st-flash --connect-under-reset write Framework/Utils/zephyrproject/zephyr/build/zephyr/zephyr.bin 0x08000000
+2025-02-24 18:49:36 - TZR001 - INFO - Attempt 1: Executing command st-flash --connect-under-reset write Framework/Utils/zephyrproject/zephyr/build/zephyr/zephyr.bin 0x08000000
+2025-02-24 18:49:36 - TZR001 - DEBUG - Process output: st-flash 1.7.0
+2025-02-24 18:49:36 - TZR001 - DEBUG - Process output: file Framework/Utils/zephyrproject/zephyr/build/zephyr/zephyr.bin md5 checksum: ddea7bcfbd999884fdd5a91c71c2e, stlink checksum: 0x001ec869
+2025-02-24 18:49:37 - TZR001 - WARNING - Pattern not found, retrying command...
+2025-02-24 18:49:37 - TZR001 - INFO - Attempt 2: Executing command st-flash --connect-under-reset write Framework/Utils/zephyrproject/zephyr/build/zephyr/zephyr.bin 0x08000000
+2025-02-24 18:49:37 - TZR001 - DEBUG - Process output: st-flash 1.7.0
+2025-02-24 18:49:37 - TZR001 - DEBUG - Process output: file Framework/Utils/zephyrproject/zephyr/build/zephyr/zephyr.bin md5 checksum: ddea7bcfbd999884fdd5a91c71c2e, stlink checksum: 0x001ec869
+2025-02-24 18:49:39 - TZR001 - ERROR - Error: Expected output not found after retrying.
+2025-02-24 18:49:44 - TZR001 - INFO - Attempting to open serial port /dev/ttyACM0, attempt 1
+2025-02-24 18:49:44 - TZR001 - INFO - Starting serial read thread
+2025-02-24 18:49:44 - TZR001 - INFO - Starting continuous serial read
+2025-02-24 18:49:44 - TZR001 - INFO - Executing reset command: st-flash --connect-under-reset reset
+2025-02-24 18:49:44 - TZR001 - INFO - Command executed successfully: st-flash --connect-under-reset reset
+2025-02-24 18:49:46 - TZR001 - ERROR - Error writing to file Tests/Outputs/Output_file/TZR001_output.txt: [Errno 2] No such file or directory: 'Tests/Outputs/Output_file/TZR001_output.txt'
+2025-02-24 18:49:47 - TZR001 - ERROR - Error writing to file Tests/Outputs/Output_file/TZR001_output.txt: [Errno 2] No such file or directory: 'Tests/Outputs/Output_file/TZR001_output.txt'
+2025-02-24 18:49:48 - TZR001 - ERROR - Error writing to file Tests/Outputs/Output_file/TZR001_output.txt: [Errno 2] No such file or directory: 'Tests/Outputs/Output_file/TZR001_output.txt'
+2025-02-24 18:49:51 - TZR001 - ERROR - Error writing to file Tests/Outputs/Output_file/TZR001_output.txt: [Errno 2] No such file or directory: 'Tests/Outputs/Output_file/TZR001_output.txt'
+2025-02-24 18:49:54 - TZR001 - INFO - Stopping serial read thread
+2025-02-24 18:50:10 - TZR001 - ERROR - Error writing to file Tests/Outputs/Output_file/TZR001_output.txt: [Errno 2] No such file or directory: 'Tests/Outputs/Output_file/TZR001_output.txt'
+2025-02-24 18:50:10 - TZR001 - INFO - Stopping continuous serial read
