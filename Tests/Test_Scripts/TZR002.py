@@ -6,13 +6,13 @@ import sys
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("TZR001")
+logger = logging.getLogger("TZR002")
 
 @pytest.fixture(scope="function")
 def setup_fixture(request):
     """Fixture to set up and clean up the test environment."""
     setup = TestSetup()
-    setup.setup_method("TZR001", logger)
+    setup.setup_method("TZR002", logger)
 
     yield setup  # Yield control to the test function
 
@@ -21,6 +21,6 @@ def setup_fixture(request):
 def test_case_1(setup_fixture):
     """Example test case using the fixture."""
     # Your test logic here
-    logger.info("Executing test_case_1")
+    logger.info("Executing test_case_2")
     assert True  # Dummy assertion
 
