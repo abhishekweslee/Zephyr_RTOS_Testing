@@ -99,15 +99,27 @@ class Builder:
                 return False
 
     def reset_board(self):
-        """Resets the board using st-flash"""
-        command = "st-flash --connect-under-reset reset"
-        output, _, returncode = self.run_command(command)
+        try:
+            # Run the command and capture output
+            result = subprocess.run(
+                ["st-flash", "--connect-under-reset", "reset"],
+                text=True,
+                capture_output=True,
+                check=True
+            )
 
-        # Print reset output for debugging
-        print(f"Board reset output:\n{output}")
+            # Merge stdout and stderr (in case output is split)
+            actual_output = (result.stdout + result.stderr).strip()
+            print("Actual Output:\n", actual_output)  # Debugging
 
-        if returncode == 0:
-            self.logger.info("Board reset successfully!")
-        else:
-            self.logger.error("Board reset failed!")
+            # Expected pattern
+            pattern = r"st-flash 1\.7\.0(\n.*)?"
 
+            if re.fullmatch(pattern, actual_output, re.DOTALL):
+                return "OK"
+            else:
+                return "FAIL"
+
+        except subprocess.CalledProcessError as e:
+            print("Command failed with error:", e.stderr)
+            return "FAIL"

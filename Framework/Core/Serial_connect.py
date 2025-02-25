@@ -1,90 +1,103 @@
-import serial
+import os
 import threading
-import time
+import re
 import logging
+import time
+import subprocess
+import select
 
 
-class Serial_connect:
-    def __init__(self, port, baud_rate, output_file, logger):
-        self.port = port
+
+class SerialReader:
+    def __init__(self, serial_port="/dev/ttyACM4", baud_rate=115200, output_file="Master_output.txt", logger=None,
+                 timeout=5):
+        self.serial_port = serial_port
         self.baud_rate = baud_rate
         self.output_file = output_file
-        self.logger = logger
         self.running = False
         self.thread = None
-        self.serial_conn = self._init_serial()
+        self.timeout = timeout
+        self.logger = logger if logger else logging.getLogger(__name__)
 
-    def _init_serial(self):
-        attempts = 0
-        while attempts < 3:
-            try:
-                self.logger.info(f"Attempting to open serial port {self.port}, attempt {attempts + 1}")
-                return serial.Serial(self.port, self.baud_rate, timeout=1)
-            except serial.SerialException as e:
-                self.logger.error(f"Attempt {attempts + 1}: Failed to open serial port {self.port}. Error: {e}")
-                attempts += 1
-                time.sleep(2)
-        self.logger.critical(f"Failed to open serial port {self.port} after 3 attempts.")
-        raise Exception(f"Failed to open serial port {self.port} after 3 attempts.")
+        # Configure serial port
+        self._configure_serial_port()
 
-    def _write_to_file(self, line):
+    def _configure_serial_port(self):
+        """Configures the serial port settings using `stty`."""
         try:
-            with open(self.output_file, 'a') as file:
-                file.write(line + '\n')
-            self.logger.debug(f"Written to file: {line}")
-        except IOError as e:
-            self.logger.error(f"Error writing to file {self.output_file}: {e}")
+            subprocess.run(["stty", "-F", self.serial_port, str(self.baud_rate)], check=True)
+            self.logger.info(f"[INFO] Serial port {self.serial_port} configured with baud rate {self.baud_rate}.")
+        except subprocess.CalledProcessError as e:
+            self.logger.error(f"[ERROR] Failed to configure serial port: {e}")
 
-    def read_by_time(self, delay):
-        self.logger.info(f"Reading serial data for {delay} seconds")
-        end_time = time.time() + delay
-        while time.time() < end_time:
-            if self.serial_conn and self.serial_conn.in_waiting:
-                line = self.serial_conn.readline().decode(errors='ignore').strip()
-                self._write_to_file(line)
+    def _remove_ansi_escape(self, text):
+        """Removes ANSI escape codes from the input text."""
+        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+        return ansi_escape.sub('', text)
 
-    def read_by_lines(self, num_lines):
-        self.logger.info(f"Reading {num_lines} lines from serial port")
-        count = 0
-        while count < num_lines:
-            if self.serial_conn and self.serial_conn.in_waiting:
-                line = self.serial_conn.readline().decode(errors='ignore').strip()
-                self._write_to_file(line)
-                count += 1
+    def _read_serial(self):
+        """Reads serial data continuously and writes to the file."""
+        try:
+            with open(self.serial_port, "rb") as f, open(self.output_file, "w", encoding="utf-8") as out_f:
+                self.logger.info("[INFO] Serial reading started...")
 
-    def _continuous_read(self):
-        self.logger.info("Starting continuous serial read")
-        while self.running:
-            if self.serial_conn and self.serial_conn.in_waiting:
-                line = self.serial_conn.readline().decode(errors='ignore').strip()
-                self._write_to_file(line)
-        self.logger.info("Stopping continuous serial read")
+                last_read_time = time.time()
+                while self.running:
+                    fds, _, _ = select.select([f], [], [], self.timeout)  # Non-blocking check
+                    if fds:
+                        data = f.readline().decode(errors="ignore").strip()
+                        if data:
+                            clean_data = self._remove_ansi_escape(data)
+                            print(clean_data)
+                            out_f.write(clean_data + "\n")
+                            out_f.flush()
+                            last_read_time = time.time()
 
-    def serial_start(self):
+                    # Stop if no data received for `timeout` seconds
+                    if time.time() - last_read_time > self.timeout:
+                        self.logger.warning("[WARNING] No new data received. Stopping serial reader.")
+                        self.running = False
+                        break
+
+        except Exception as e:
+            self.logger.error(f"[ERROR] {e}")
+        finally:
+            self.logger.info("[INFO] Closing serial reader.")
+
+    def start_reading(self):
+        """Starts the serial data reading process."""
         if not self.running:
-            self.logger.info("Starting serial read thread")
+            self.logger.info("[INFO] Starting serial data collection...")
             self.running = True
-            self.thread = threading.Thread(target=self._continuous_read)
+            self.thread = threading.Thread(target=self._read_serial, daemon=True)
             self.thread.start()
+        else:
+            self.logger.warning("[WARNING] Already running!")
 
-    def serial_stop(self):
+    def stop_reading(self):
+        """Stops the serial data reading process."""
         if self.running:
-            self.logger.info("Stopping serial read thread")
+            self.logger.info("[INFO] Stopping serial data collection...")
             self.running = False
             if self.thread:
                 self.thread.join()
+            self.logger.info(f"[INFO] Data saved to: {self.output_file}")
+        else:
+            self.logger.warning("[WARNING] Not currently running!")
 
-    def close(self):
-        if self.serial_conn:
-            self.logger.info("Closing serial connection")
-            self.serial_conn.close()
+        print("stoped============")
 
-# Example Usage
-# import logging
-# logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-# logger = logging.getLogger(__name__)
-# serial_conn = Serial_connect('/dev/ttyUSB0', 115200, 'output.txt', logger)
-# serial_conn.serial_start()
-# time.sleep(10)  # Read continuously for 10 seconds
-# serial_conn.serial_stop()
-# serial_conn.close()
+
+# Usage example:
+# if __name__ == "__main__":
+#     logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+#     logger = logging.getLogger("SerialReader")
+#
+#     reader = SerialReader(serial_port="/dev/ttyACM0", baud_rate=115200, output_file="Master_output.txt", logger=logger,
+#                           timeout=3)
+#
+#     reader.start_reading()
+#
+#     time.sleep(10)  # Read for 10 seconds (replace with your logic)
+#
+#     reader.stop_reading()
