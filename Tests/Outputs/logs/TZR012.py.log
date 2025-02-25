@@ -1,0 +1,43 @@
+2025-02-25 19:01:10 - TZR012 - INFO - Executing command: .venv/bin/west build -p always -b nucleo_f401re zephyr/TZR02
+2025-02-25 19:01:10 - TZR012 - DEBUG - Command output:
+
+2025-02-25 19:01:10 - TZR012 - DEBUG - Command errors:
+ERROR: source directory zephyr/TZR02 does not exist
+FATAL ERROR: refusing to proceed without --force due to above error
+
+2025-02-25 19:01:10 - TZR012 - WARNING - Pattern not found. Retrying build once...
+2025-02-25 19:01:10 - TZR012 - INFO - Executing command: .venv/bin/west build -p always -b nucleo_f401re zephyr/TZR02
+2025-02-25 19:01:11 - TZR012 - DEBUG - Command output:
+
+2025-02-25 19:01:11 - TZR012 - DEBUG - Command errors:
+ERROR: source directory zephyr/TZR02 does not exist
+FATAL ERROR: refusing to proceed without --force due to above error
+
+2025-02-25 19:01:11 - TZR012 - ERROR - Build process failed after retry.
+2025-02-25 19:01:16 - TZR012 - INFO - Executing command: st-flash --connect-under-reset write build/zephyr/zephyr.bin 0x08000000
+2025-02-25 19:01:17 - TZR012 - DEBUG - Command output:
+st-flash 1.7.0
+file build/zephyr/zephyr.bin md5 checksum: f5d5b2de3b7a28b752284c98442379a2, stlink checksum: 0x001ebac3
+
+2025-02-25 19:01:17 - TZR012 - DEBUG - Command errors:
+2025-02-25T19:01:16 INFO common.c: F4xx (Dynamic Efficency): 96 KiB SRAM, 512 KiB flash in at least 16 KiB pages.
+2025-02-25T19:01:16 INFO common.c: Attempting to write 21864 (0x5568) bytes to stm32 address: 134217728 (0x8000000)
+EraseFlash - Sector:0x0 Size:0x4000 2025-02-25T19:01:16 INFO common.c: Flash page at addr: 0x08000000 erased
+EraseFlash - Sector:0x1 Size:0x4000 2025-02-25T19:01:17 INFO common.c: Flash page at addr: 0x08004000 erased
+2025-02-25T19:01:17 INFO common.c: Finished erasing 2 pages of 16384 (0x4000) bytes
+2025-02-25T19:01:17 INFO common.c: Starting Flash write for F2/F4/F7/L4
+2025-02-25T19:01:17 INFO flash_loader.c: Successfully loaded flash loader in sram
+2025-02-25T19:01:17 INFO flash_loader.c: Clear DFSR
+2025-02-25T19:01:17 INFO common.c: enabling 32-bit flash writes
+2025-02-25T19:01:17 INFO common.c: Starting verification of write complete
+2025-02-25T19:01:17 INFO common.c: Flash written and verified! jolly good!
+
+2025-02-25 19:01:22 - TZR012 - INFO - [INFO] Serial port /dev/ttyACM4 configured with baud rate 115200.
+2025-02-25 19:01:22 - TZR012 - INFO - [INFO] Starting serial data collection...
+2025-02-25 19:01:22 - TZR012 - INFO - [INFO] Serial reading started...
+2025-02-25 19:01:22 - TZR012 - INFO - Board reset status OK
+2025-02-25 19:01:27 - TZR012 - WARNING - [WARNING] No new data received. Stopping serial reader.
+2025-02-25 19:01:27 - TZR012 - INFO - [INFO] Closing serial reader.
+2025-02-25 19:01:32 - TZR012 - WARNING - [WARNING] Not currently running!
+2025-02-25 19:01:32 - TZR012 - INFO - Executing test_case_12
+2025-02-25 19:01:32 - TZR012 - INFO - Cleaning up for TZR02

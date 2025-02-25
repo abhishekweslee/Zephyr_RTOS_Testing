@@ -1,0 +1,12 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Starting Timer Precision Test...
+One-shot timer started: 1000 ms timeout
+Periodic timer started: 500 ms period
+Periodic timer expired! Expected: 500 ms, Actual: 500 ms
+One-shot timer expired! Expected: 1000 ms, Actual: 1000 ms
+Periodic timer expired! Expected: 500 ms, Actual: 500 ms
+Periodic timer expired! Expected: 500 ms, Actual: 500 ms
+Periodic timer expired! Expected: 500 ms, Actual: 500 ms
+Periodic timer expired! Expected: 500 ms, Actual: 500 ms
+Periodic timer expired! Expected: 500 ms, Actual: 500 ms
+Test completed. Periodic timer triggered 6 times.

@@ -1,0 +1,42 @@
+[00:00:12.002,000] <inf> context_switch: Context switch time: 42007612 cycles
+[00:00:12.002,000] <inf> context_switch: High Priority Task Running
+[00:00:12.002,000] <inf> context_switch: Medium Priority Task Running
+[00:00:12.002,000] <inf> context_switch: Low Priority Task Running
+[00:00:12.502,000] <inf> context_switch: Context switch time: 42007578 cycle*** Booting Zephyr OS build 4.1.0-rc2 ***
+[00:00:00.000,000] <inf> task_state_demo: Starting Task State Transition Test...
+[00:00:00.000,000] <inf> task_state_demo: High Priority Task: READY state
+[00:00:00.000,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:00.000,000] <inf> task_state_demo: Threads created, scheduling will now begin...
+[00:00:00.000,000] <inf> task_state_demo: Medium Priority Task: READY state
+[00:00:00.000,000] <inf> task_state_demo: Medium Priority Task: BLOCKED state (waiting for semaphore)
+[00:00:00.000,000] <inf> task_state_demo: Low Priority Task: READY state
+[00:00:00.500,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:01.000,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:01.500,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:02.000,000] <inf> task_state_demo: Low Priority Task: SUSPENDING Medium Priority Task
+[00:00:02.000,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:02.500,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:03.000,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:03.500,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:04.000,000] <inf> task_state_demo: Low Priority Task: RESUMING Medium Priority Task
+[00:00:04.000,000] <inf> task_state_demo: Low Priority Task: RUNNING state
+[00:00:04.000,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:04.501,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:05.000,000] <inf> task_state_demo: Releasing Semaphore - Medium Priority Task will wake up
+[00:00:05.000,000] <inf> task_state_demo: Medium Priority Task: RUNNING state after unblocking
+[00:00:05.000,000] <inf> task_state_demo: Low Priority Task: RUNNING state
+[00:00:05.001,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:05.500,000] <inf> task_state_demo: Medium Priority Task: BLOCKED state (waiting for semaphore)
+[00:00:05.501,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:06.000,000] <inf> task_state_demo: Low Priority Task: RUNNING state
+[00:00:06.001,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:06.501,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:07.000,000] <inf> task_state_demo: Low Priority Task: RUNNING state
+[00:00:07.001,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:07.501,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:08.000,000] <inf> task_state_demo: Low Priority Task: RUNNING state
+[00:00:08.001,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:08.501,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:09.000,000] <inf> task_state_demo: Low Priority Task: RUNNING state
+[00:00:09.001,000] <inf> task_state_demo: High Priority Task: RUNNING state
+[00:00:09.502,000] <inf> task_state_demo: High Priority Task: RUNNING state

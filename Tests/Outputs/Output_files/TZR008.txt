@@ -1,0 +1,41 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Mutex Test: Started
+[Medium] Running
+[Low] Attempting to acquire mutex
+[Low] Acquired mutex
+[High] Attempting to acquire mutex
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Low] Releasing mutex
+[High] Acquired mutex
+[Medium] Running
+[High] Releasing mutex
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running
+[Medium] Running

@@ -1,0 +1,5 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Starting Sleep & Delay Accuracy Test...
+k_sleep() expected: 1000 ms, actual: 1000 ms
+k_busy_wait() expected: 500000 us, actual: 500000 us
+Test Completed.

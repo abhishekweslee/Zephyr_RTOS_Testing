@@ -1,0 +1,5 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Testing dynamic memory allocation...
+Memory allocated at address: 0x200011f8
+Memory allocation and verification successful!
+Memory freed successfully.

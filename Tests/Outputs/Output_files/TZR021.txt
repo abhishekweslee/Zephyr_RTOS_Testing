@@ -1,0 +1,24 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Starting Concurrent Access Test...
+Unsafe: Thread A updated shared_resource to 1
+Unsafe: Thread B updated shared_resource to 1
+Unsafe: Thread A updated shared_resource to 2
+Unsafe: Thread B updated shared_resource to 2
+Unsafe: Thread A updated shared_resource to 3
+Unsafe: Thread B updated shared_resource to 3
+Unsafe: Thread A updated shared_resource to 4
+Unsafe: Thread B updated shared_resource to 4
+Unsafe: Thread A updated shared_resource to 5
+Unsafe: Thread B updated shared_resource to 5
+Safe: Thread C updated shared_resource to 6
+Safe: Thread D updated shared_resource to 7
+Safe: Thread C updated shared_resource to 8
+Safe: Thread D updated shared_resource to 9
+Safe: Thread C updated shared_resource to 10
+Safe: Thread D updated shared_resource to 11
+Safe: Thread C updated shared_resource to 12
+Safe: Thread D updated shared_resource to 13
+Safe: Thread C updated shared_resource to 14
+Safe: Thread D updated shared_resource to 15
+Final shared_resource value: 15
+Test Completed.

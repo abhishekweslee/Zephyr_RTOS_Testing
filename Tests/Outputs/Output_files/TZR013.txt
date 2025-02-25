@@ -1,0 +1,13 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Booting Zephyr Stack Overflow & Underflow Test...
+Starting Stack Overflow Test...
+E: ***** MPU FAULT *****
+E:   Data Access Violation
+E:   MMFAR Address: 0x20000544
+E: r0/a1:  0x00000000  r1/a2:  0x00000000  r2/a3:  0x00000000
+E: r3/a4:  0x20000544 r12/ip:  0x00000000 r14/lr:  0x080008b5
+E:  xpsr:  0x01000000
+E: Faulting instruction address (r15/pc): 0x08000476
+E: >>> ZEPHYR FATAL ERROR 2: Stack overflow on CPU 0
+E: Current thread: 0x20000088 (unknown)
+E: Halting system

@@ -1,0 +1,91 @@
+2025-02-25 19:12:19 - TZR026 - INFO - Executing command: .venv/bin/west build -p always -b nucleo_f401re zephyr/TZR026
+2025-02-25 19:12:23 - TZR026 - DEBUG - Command output:
+-- west build: making build dir /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/build pristine
+-- west build: generating a build system
+-- Application: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026
+-- CMake version: 3.22.1
+-- Found Python3: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/.venv/bin/python3 (found suitable version "3.10.12", minimum required is "3.10") found components: Interpreter 
+-- Cache files will be written to: /home/abhishek/.cache/zephyr
+-- Zephyr version: 4.1.0-rc2 (/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr)
+-- Found west (found suitable version "1.3.0", minimum required is "0.14.0")
+-- Board: nucleo_f401re, qualifiers: stm32f401xe
+-- Found host-tools: zephyr 0.16.3 (/home/abhishek/Work/Zephyr/zephyr-sdk-0.16.3)
+-- Found toolchain: zephyr 0.16.3 (/home/abhishek/Work/Zephyr/zephyr-sdk-0.16.3)
+-- Found Dtc: /home/abhishek/Work/Zephyr/zephyr-sdk-0.16.3/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.6.0", minimum required is "1.4.6") 
+-- Found BOARD.dts: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/boards/st/nucleo_f401re/nucleo_f401re.dts
+-- Found devicetree overlay: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026/nucleo_f401re.overlay
+-- Configuring incomplete, errors occurred!
+
+2025-02-25 19:12:23 - TZR026 - DEBUG - Command errors:
+Loading Zephyr default modules (Zephyr base).
+devicetree error: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026/nucleo_f401re.overlay:1 (column 1): parse error: undefined node label 'tim2'
+CMake Error at /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/cmake/modules/dts.cmake:303 (execute_process):
+  execute_process failed command indexes:
+
+    1: "Child return code: 1"
+
+Call Stack (most recent call first):
+  /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:133 (include)
+  /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)
+  CMakeLists.txt:2 (find_package)
+
+
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/.venv/bin/python3 -B/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/build -GNinja -DBOARD=nucleo_f401re -S/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026
+
+2025-02-25 19:12:23 - TZR026 - WARNING - Pattern not found. Retrying build once...
+2025-02-25 19:12:23 - TZR026 - INFO - Executing command: .venv/bin/west build -p always -b nucleo_f401re zephyr/TZR026
+2025-02-25 19:12:27 - TZR026 - DEBUG - Command output:
+-- west build: making build dir /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/build pristine
+-- west build: generating a build system
+-- Application: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026
+-- CMake version: 3.22.1
+-- Found Python3: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/.venv/bin/python3 (found suitable version "3.10.12", minimum required is "3.10") found components: Interpreter 
+-- Cache files will be written to: /home/abhishek/.cache/zephyr
+-- Zephyr version: 4.1.0-rc2 (/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr)
+-- Found west (found suitable version "1.3.0", minimum required is "0.14.0")
+-- Board: nucleo_f401re, qualifiers: stm32f401xe
+-- Found host-tools: zephyr 0.16.3 (/home/abhishek/Work/Zephyr/zephyr-sdk-0.16.3)
+-- Found toolchain: zephyr 0.16.3 (/home/abhishek/Work/Zephyr/zephyr-sdk-0.16.3)
+-- Found Dtc: /home/abhishek/Work/Zephyr/zephyr-sdk-0.16.3/sysroots/x86_64-pokysdk-linux/usr/bin/dtc (found suitable version "1.6.0", minimum required is "1.4.6") 
+-- Found BOARD.dts: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/boards/st/nucleo_f401re/nucleo_f401re.dts
+-- Found devicetree overlay: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026/nucleo_f401re.overlay
+-- Configuring incomplete, errors occurred!
+
+2025-02-25 19:12:27 - TZR026 - DEBUG - Command errors:
+Loading Zephyr default modules (Zephyr base).
+devicetree error: /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026/nucleo_f401re.overlay:1 (column 1): parse error: undefined node label 'tim2'
+CMake Error at /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/cmake/modules/dts.cmake:303 (execute_process):
+  execute_process failed command indexes:
+
+    1: "Child return code: 1"
+
+Call Stack (most recent call first):
+  /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/cmake/modules/zephyr_default.cmake:133 (include)
+  /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)
+  /home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)
+  CMakeLists.txt:2 (find_package)
+
+
+FATAL ERROR: command exited with status 1: /usr/bin/cmake -DWEST_PYTHON=/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/.venv/bin/python3 -B/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/build -GNinja -DBOARD=nucleo_f401re -S/home/abhishek/PycharmProjects/Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/TZR026
+
+2025-02-25 19:12:27 - TZR026 - ERROR - Build process failed after retry.
+2025-02-25 19:12:32 - TZR026 - INFO - Executing command: st-flash --connect-under-reset write build/zephyr/zephyr.bin 0x08000000
+2025-02-25 19:12:32 - TZR026 - DEBUG - Command output:
+st-flash 1.7.0
+stlink_fwrite_flash() == -1
+
+2025-02-25 19:12:32 - TZR026 - DEBUG - Command errors:
+2025-02-25T19:12:32 INFO common.c: F4xx (Dynamic Efficency): 96 KiB SRAM, 512 KiB flash in at least 16 KiB pages.
+open(build/zephyr/zephyr.bin) == -1
+2025-02-25T19:12:32 ERROR common.c: map_file() == -1
+
+2025-02-25 19:12:37 - TZR026 - INFO - [INFO] Serial port /dev/ttyACM4 configured with baud rate 115200.
+2025-02-25 19:12:37 - TZR026 - INFO - [INFO] Starting serial data collection...
+2025-02-25 19:12:37 - TZR026 - INFO - [INFO] Serial reading started...
+2025-02-25 19:12:37 - TZR026 - INFO - Board reset status OK
+2025-02-25 19:12:47 - TZR026 - INFO - [INFO] Stopping serial data collection...
+2025-02-25 19:12:47 - TZR026 - INFO - [INFO] Closing serial reader.
+2025-02-25 19:12:47 - TZR026 - INFO - [INFO] Data saved to: Tests/Outputs/Output_files/TZR026.txt
+2025-02-25 19:12:47 - TZR026 - INFO - Executing test_case_26
+2025-02-25 19:12:47 - TZR026 - INFO - Cleaning up for TZR026

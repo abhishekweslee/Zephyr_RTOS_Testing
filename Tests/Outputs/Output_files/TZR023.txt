@@ -1,0 +1,68 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS: Task Execution Profiling ***
+[Monitor] System running...
+High Load Task executed in 500088 cycles
+Medium Load Task executed in 100088 cycles
+Low Load Task executed in 50091 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+[Monitor] System running...
+High Load Task executed in 500880 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+[Monitor] System running...
+High Load Task executed in 500880 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+[Monitor] System running...
+High Load Task executed in 500880 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+[Monitor] System running...
+High Load Task executed in 500880 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+High Load Task executed in 500881 cycles
+Medium Load Task executed in 100086 cycles
+Low Load Task executed in 50086 cycles
+[Monitor] System running...

@@ -1,0 +1,8 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Starting Timer Creation, Deletion & Expiry Test...
+Timer initialized successfully.
+Timer started: 1000 ms timeout, 500 ms period.
+Timer expired! Callback executed.
+Test Passed: Timer expired as expected.
+Timer stopped.
+Timer stopped and deleted.

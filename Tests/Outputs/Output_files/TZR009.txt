@@ -1,0 +1,7 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Waiting for EVENT_FLAG_1...
+Setting EVENT_FLAG_1
+Received EVENT_FLAG_1: 0x1
+Waiting for EVENT_FLAG_2...
+Setting EVENT_FLAG_2
+Received EVENT_FLAG_2: 0x2

@@ -1,12 +1,61 @@
 *** Booting Zephyr OS build 4.1.0-rc2 ***
-[00:00:00.000,000] <inf> task_mgmt: Task Management Test Started
-[00:00:00.000,000] <inf> task_mgmt: Thread 1 started with HIGH priority
-[00:00:00.000,000] <inf> task_mgmt: Thread 2 started with MEDIUM priority
-[00:00:00.000,000] <inf> task_mgmt: Thread 3 started with LOW priority
-[00:00:02.000,000] <inf> task_mgmt: Thread 1 exiting...
-[00:00:02.000,000] <inf> task_mgmt: Thread 2 exiting...
-[00:00:02.000,000] <inf> task_mgmt: Thread 3 exiting...
-[00:00:03.000,000] <inf> task_mgmt: Deleting Thread 1...
-[00:00:03.000,000] <inf> task_mgmt: Deleting Thread 2...
-[00:00:03.000,000] <inf> task_mgmt: Deleting Thread 3...
-[00:00:03.000,000] <inf> task_mgmt: Task Management Test Completed
+Starting Task Scheduling Test...
+Threads created, scheduling will now begin...
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running
+Medium Priority Task Running
+Low Priority Task Running
+High Priority Task Running

@@ -1,0 +1,39 @@
+10,000] <inf> task_starvation: High-Priority Task Running
+[00:00:10.110,000] <inf> task_starvation: High-Priority Task Running
+[00:00:10.210,000] <inf> task_starvation: High-Priority Task Running
+[00:00:10.310,000] <inf> task_starvation: High-Priority Task Running
+[00:00:10.410,000] <inf> task_starvation: High-Priority Task Running
+[00:00:10.502,000] <inf> task_starvation: Medium-Priority Task Running
+[00:00:10.510,000] <inf> task_starvation: High-Priority Task Running
+[00:00:10.610,000] <inf> task_starva*** Booting Zephyr OS build 4.1.0-rc2 ***
+Starting Message Queue Priority Test
+Sender Task (Priority -1): Sent Message ID 0
+Sender Task (Priority 0): Sent Message ID 0
+Receiver: Received Message ID 0 from Priority -1
+Receiver: Received Message ID 0 from Priority 0
+Sender Task (Priority 1): Sent Message ID 0
+Receiver: Received Message ID 0 from Priority 1
+Sender Task (Priority -1): Sent Message ID 1
+Sender Task (Priority 0): Sent Message ID 1
+Receiver: Received Message ID 1 from Priority -1
+Receiver: Received Message ID 1 from Priority 0
+Sender Task (Priority 1): Sent Message ID 1
+Receiver: Received Message ID 1 from Priority 1
+Sender Task (Priority -1): Sent Message ID 2
+Receiver: Received Message ID 2 from Priority -1
+Sender Task (Priority 0): Sent Message ID 2
+Receiver: Received Message ID 2 from Priority 0
+Sender Task (Priority 1): Sent Message ID 2
+Receiver: Received Message ID 2 from Priority 1
+Sender Task (Priority -1): Sent Message ID 3
+Receiver: Received Message ID 3 from Priority -1
+Sender Task (Priority 0): Sent Message ID 3
+Receiver: Received Message ID 3 from Priority 0
+Sender Task (Priority 1): Sent Message ID 3
+Receiver: Received Message ID 3 from Priority 1
+Sender Task (Priority -1): Sent Message ID 4
+Receiver: Received Message ID 4 from Priority -1
+Sender Task (Priority 0): Sent Message ID 4
+Receiver: Received Message ID 4 from Priority 0
+Sender Task (Priority 1): Sent Message ID 4
+Receiver: Received Message ID 4 from Priority 1

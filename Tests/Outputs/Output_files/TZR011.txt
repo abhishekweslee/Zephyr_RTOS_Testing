@@ -1,0 +1,24 @@
+*** Booting Zephyr OS build 4.1.0-rc2 ***
+Starting memory fragmentation test...
+Allocated block 0 at address: 0x200028c8
+Allocated block 1 at address: 0x200029d0
+Allocated block 2 at address: 0x20002ad8
+Allocated block 3 at address: 0x20002be0
+Allocated block 4 at address: 0x20002ce8
+Allocated block 5 at address: 0x20002df0
+Allocated block 6 at address: 0x20002ef8
+Allocated block 7 at address: 0x20003000
+Allocated block 8 at address: 0x20003108
+Allocated block 9 at address: 0x20003210
+Freed block 0
+Freed block 2
+Freed block 4
+Freed block 6
+Freed block 8
+Successfully allocated large block at: 0x20003318
+Freed block 1
+Freed block 3
+Freed block 5
+Freed block 7
+Freed block 9
+Memory fragmentation test completed.
