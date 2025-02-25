@@ -1,0 +1,4 @@
+&tim2 {
+    interrupts = <28 1>;
+    status = "okay";
+};

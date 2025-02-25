@@ -1,0 +1,4 @@
+&tim2 {
+    status = "okay";
+    interrupts = <28 0>;  // Correct: 2 values for 2 interrupt-cells
+};
