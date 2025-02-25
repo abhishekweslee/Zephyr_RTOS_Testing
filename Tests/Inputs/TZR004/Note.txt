@@ -1,0 +1,7 @@
+add the following lines in the "Kconfig.zephyr" file
+
+"""
+config SEMAPHORE
+    bool "Enable Semaphore feature"
+    default y
+"""
