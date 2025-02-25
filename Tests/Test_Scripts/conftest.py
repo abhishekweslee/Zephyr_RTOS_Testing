@@ -1,37 +1,59 @@
-import logging
+import os
 import pytest
-from pathlib import Path
 
 
-# Hook to set up a log file specific to each test script
+@pytest.hookimpl(tryfirst=True)
+def pytest_collection_modifyitems(config, items):
+    """Ensure test items are sorted to avoid random selection issues."""
+    items.sort(key=lambda item: item.location[0])  # Sort test scripts alphabetically
+
+
+@pytest.fixture(scope="function")
+def output_dir(request):
+    """Automatically determine output directory for each test script."""
+    test_file = request.node.location[0]  # Get the current test file name
+    script_name = os.path.splitext(os.path.basename(test_file))[0]  # Remove .py
+
+    base_path = os.path.join("Tests", "Outputs", script_name)
+    return base_path
+
+
+def pytest_configure(config):
+    """Create individual report and log directories for each test script."""
+    test_files = set()
+
+    # Check if running all tests or a specific test file
+    if config.args:
+        for test_file in config.args:
+            if test_file.endswith(".py"):
+                script_name = os.path.splitext(os.path.basename(test_file))[0]
+                test_files.add(script_name)
+    else:
+        for item in config.pluginmanager.get_plugin("session").items:
+            test_file = item.location[0]  # Get test file name
+            script_name = os.path.splitext(os.path.basename(test_file))[0]  # Remove .py
+            test_files.add(script_name)
+
+    for script_name in test_files:
+        base_path = os.path.join("Tests", "Outputs", script_name)
+        report_dir = os.path.join(base_path, "report")
+        log_dir = os.path.join(base_path, "logs")
+
+        os.makedirs(report_dir, exist_ok=True)
+        os.makedirs(log_dir, exist_ok=True)
+
+    print(f"\nCreated directories for test scripts: {sorted(test_files)}")
+
+
 @pytest.hookimpl(tryfirst=True)
 def pytest_runtest_setup(item):
-    test_name = item.nodeid.split("::")[0].replace("/", "_").replace("\\", "_")
-    log_dir = Path("Tests/Outputs/logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / f"{test_name}.log"
+    """Configure report and log paths dynamically for each test."""
+    test_file = item.location[0]  # Get test script name
+    script_name = os.path.splitext(os.path.basename(test_file))[0]  # Remove .py
 
-    # Configure a file handler for the test-specific log
-    handler = logging.FileHandler(log_file)
-    formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-        "%Y-%m-%d %H:%M:%S",
-    )
-    handler.setFormatter(formatter)
+    base_path = os.path.join("Tests", "Outputs", script_name)
+    report_dir = os.path.join(base_path, "report")
+    log_dir = os.path.join(base_path, "logs")
 
-    # Add the handler to the root logger
-    logger = logging.getLogger()
-    logger.handlers = []  # Clear existing handlers to prevent duplicates
-    logger.addHandler(handler)
-    logger.setLevel(logging.DEBUG)
-
-
-# Hook to set the report filename dynamically based on the test script
-@pytest.hookimpl(tryfirst=True)
-def pytest_sessionfinish(session, exitstatus):
-    report_dir = Path("Tests/Outputs/report")
-    report_dir.mkdir(parents=True, exist_ok=True)
-    report_file = report_dir / "Report.html"
-
-    # Dynamically set the HTML report path
-    session.config.option.htmlpath = str(report_file)
+    item.config.option.htmlpath = os.path.join(report_dir, "test_report.html")
+    item.config.option.log_file = os.path.join(log_dir, "test_log.log")
