@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def event_flags_synchronization_test(setup_fixture):
     """Test event flags signalling and task synchronization."""
     output_file_path = "Tests/Outputs/Output_files/TZR009.txt"
     logger.info(f"Reading output file: {output_file_path}")
