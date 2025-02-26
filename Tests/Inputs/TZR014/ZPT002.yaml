@@ -1,0 +1,36 @@
+test:
+  name: ISR Execution Time
+  id: TZR014
+  description: |
+    Verify the execution time of the Interrupt Service Routine (ISR) in Zephyr RTOS.
+    The test measures the time taken from triggering an interrupt to the ISR execution.
+  type: performance
+  category: Interrupt Handling
+  prerequisites:
+    - Valid IRQ line and hardware support for interrupts.
+    - Logging and timing configurations enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_SERIAL=y`
+      - `CONFIG_STDOUT_CONSOLE=y`
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_GPIO=y`
+      - `CONFIG_TIMER=y`
+      - `CONFIG_LOG=y`
+      - `CONFIG_LOG_MODE_IMMEDIATE=y`
+      - `CONFIG_LOG_DEFAULT_LEVEL=4`
+    - Ensure `IRQ_LINE` corresponds to a valid interrupt on the target hardware.
+  steps:
+    - Connect and enable an IRQ handler.
+    - Record the start time before triggering the interrupt.
+    - Trigger the ISR and capture the end time upon execution.
+    - Calculate and log the ISR execution time in nanoseconds.
+  expected_results:
+    - "Zephyr ISR Execution Time Test" log appears at startup.
+    - ISR executes successfully with start and end times recorded.
+    - ISR execution time is logged in nanoseconds.
+    - No unexpected delays or failures occur.
+  additional_notes:
+    - Test on different IRQ lines to observe latency variations.
+    - Repeat under varying CPU loads to assess consistency.
+    - Ensure IRQ priorities are properly configured for accurate measurements.
