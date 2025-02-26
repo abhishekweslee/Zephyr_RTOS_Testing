@@ -1,0 +1,27 @@
+test:
+  name: Out-of-Memory Handling
+  id: TZR012
+  description: |
+    Check the system's behavior when heap memory is exhausted in Zephyr RTOS.
+    This test continuously allocates memory blocks until allocation fails, verifying proper error handling.
+  type: functional
+  category: Memory Management
+  prerequisites:
+    - Heap memory allocation enabled.
+    - Standard C library support (Newlib) configured.
+  setup:
+    - Enable `CONFIG_HEAP_MEM_POOL_SIZE=4096`.
+    - Enable `CONFIG_NEWLIB_LIBC=y`.
+  steps:
+    - Allocate 256-byte blocks in a loop.
+    - Continue until `malloc` returns `NULL` (indicating no memory left).
+    - Log the number of successful allocations and failure point.
+  expected_results:
+    - Allocations succeed until heap is exhausted.
+    - "Out of memory!" message logs upon failure.
+    - No crashes or undefined behavior occurs.
+    - System remains responsive after failure.
+  additional_notes:
+    - Test with varying `BLOCK_SIZE` and heap sizes.
+    - Use memory analyzers to confirm no leaks or corruption.
+    - Verify system stability after hitting out-of-memory condition.
