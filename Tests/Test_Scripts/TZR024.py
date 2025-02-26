@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_real_time_deadline_validation(setup_fixture):
+def periodic_task_deadline_adherence(setup_fixture):
     """Test to validate real-time deadline adherence for periodic tasks."""
     output_file_path = "Tests/Outputs/Output_files/TZR024.txt"
     logger.info(f"Reading output file: {output_file_path}")
