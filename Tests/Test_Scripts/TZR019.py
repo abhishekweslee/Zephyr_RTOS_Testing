@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def sleep_delay_accuracy_test(setup_fixture):
     """Test to measure the accuracy of sleep and delay functions."""
     output_file_path = "Tests/Outputs/Output_files/TZR019.txt"
     logger.info(f"Reading output file: {output_file_path}")
