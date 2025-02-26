@@ -1,0 +1,29 @@
+test:
+  name: Task Starvation and Priority Inversion
+  id: TZR005
+  description: |
+    Test task starvation and priority inversion scenarios in Zephyr RTOS.
+    This test creates three tasks with varying priorities. The low-priority task holds a mutex,
+    potentially blocking the high-priority task if priority inversion occurs without mitigation.
+  type: functional
+  category: Task Management
+  prerequisites:
+    - Mutex support enabled in Zephyr RTOS.
+    - Logging and serial output configured.
+  setup:
+    - Enable `CONFIG_LOG=y`, `CONFIG_PRINTK=y`, and `CONFIG_SERIAL=y`.
+    - Initialize mutexes before task execution.
+  steps:
+    - Start three tasks with HIGH, MEDIUM, and LOW priorities.
+    - Low-priority task locks a mutex and simulates a long processing time.
+    - High-priority task runs periodically, potentially getting blocked.
+    - Medium-priority task interrupts execution, demonstrating potential starvation.
+    - Observe whether priority inheritance prevents inversion.
+  expected_results:
+    - "Starting Task Starvation & Priority Inversion Test" appears at startup.
+    - Low-priority task logs successful mutex acquisition and release.
+    - High-priority task runs without prolonged blocking due to priority inheritance.
+    - Medium-priority task logs regular execution without causing starvation.
+  additional_notes:
+    - Test with and without priority inheritance enabled to observe differences.
+    - Monitor timing between mutex acquisition and release to validate proper handling.
