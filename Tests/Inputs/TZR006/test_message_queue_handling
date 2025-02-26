@@ -1,0 +1,27 @@
+test:
+  name: Message Queue Handling
+  id: TZR006
+  description: |
+    Verify the correct handling of message queues in Zephyr RTOS by sending and receiving messages
+    with different task priorities. The test ensures that messages are sent and received in the correct order.
+  type: functional
+  category: Inter-task Communication
+  prerequisites:
+    - Message queue support enabled.
+    - Logging and serial output configured.
+  setup:
+    - Enable `CONFIG_PRINTK=y`, `CONFIG_SERIAL=y`, and `CONFIG_LOG=y`.
+    - Initialize message queues with appropriate sizes.
+  steps:
+    - Create three sender tasks with HIGH, MEDIUM, and LOW priorities.
+    - Each sender sends multiple messages with a priority identifier.
+    - Create a receiver task to read messages from the queue.
+    - Verify that the receiver correctly logs message IDs and sender priorities.
+  expected_results:
+    - "Starting Message Queue Priority Test" message appears at the start.
+    - Sender tasks log messages indicating sent message IDs and priorities.
+    - Receiver logs received messages in the correct order.
+    - No message loss or unexpected ordering occurs.
+  additional_notes:
+    - Test full and empty queue scenarios to validate edge cases.
+    - Increase MSGQ_SIZE to observe behavior with larger queues.
