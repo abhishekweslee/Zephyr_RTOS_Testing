@@ -21,7 +21,7 @@ def setup_fixture(request):
     setup.cleanup()
 
 
-def test_case(setup_fixture):
+def task_management_test(setup_fixture):
     logger.info("Starting test_case_2.")
 
     output_file_path = "Tests/Outputs/Output_files/TZR001.txt"
