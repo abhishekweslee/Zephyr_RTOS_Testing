@@ -22,23 +22,6 @@ Prerequisites
 - Logging enabled (`CONFIG_LOG=y`)
 - Thread monitoring and naming enabled (`CONFIG_THREAD_MONITOR=y`, `CONFIG_THREAD_NAME=y`)
 
-Building and Running
---------------------
-1. Build the project:
-   .. code-block:: bash
-
-      west build -b <your_board> -s . -d build
-
-2. Flash the firmware:
-   .. code-block:: bash
-
-      west flash -d build
-
-3. Monitor the logs:
-   .. code-block:: bash
-
-      west log -d build
-
 Expected Output
 ---------------
 - "Task Management Test Started" log message.
