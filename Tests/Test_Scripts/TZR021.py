@@ -20,7 +20,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def concurrent_access_with_and_without_mutex(setup_fixture):
     """Test concurrent access to shared resources with and without mutex."""
     output_file_path = "Tests/Outputs/Output_files/TZR021.txt"
     logger.info(f"Reading output file: {output_file_path}")
