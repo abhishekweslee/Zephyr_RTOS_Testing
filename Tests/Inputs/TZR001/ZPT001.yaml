@@ -1,0 +1,28 @@
+test:
+  name: Task Creation, Deletion, and Priority Assignment
+  id: TZR001
+  description: |
+    Verify that tasks can be created, deleted, and assigned different priorities in Zephyr RTOS.
+    This test creates three threads with varying priorities, ensures they run as expected, and 
+    then deletes them. Logs confirm successful creation, execution, and termination of threads.
+  type: functional
+  category: Task Management
+  prerequisites:
+    - Zephyr RTOS running on the target board
+  setup:
+    - Ensure logging is enabled (CONFIG_LOG=y).
+    - Enable thread monitoring and name support.
+  steps:
+    - Build and flash the firmware.
+    - Observe the logs for thread creation messages with assigned priorities.
+    - Verify that threads run for the specified duration and exit.
+    - Check that threads are properly deleted.
+  expected_results:
+    - "Task Management Test Started" log appears.
+    - Threads 1, 2, and 3 start with HIGH, MEDIUM, and LOW priorities respectively.
+    - Each thread runs, logs execution, and exits after the defined delay.
+    - Logs indicate successful deletion of each thread.
+    - "Task Management Test Completed" log appears.
+  additional_notes:
+    - Validate behavior with different priority values and task delays.
+    - Ensure no resource leaks occur after thread deletion.
