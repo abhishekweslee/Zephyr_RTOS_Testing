@@ -1,0 +1,28 @@
+test:
+  name: Concurrent Access with and without Mutex
+  id: TZR021
+  description: |
+    Demonstrate the effects of concurrent access to a shared resource with and without mutex protection.
+    This test compares data consistency between unsafe (no mutex) and safe (with mutex) accesses.
+  type: functional
+  category: Synchronization and Concurrency
+  prerequisites:
+    - Threading and mutex support enabled in Zephyr.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_ASSERT=y`
+      - `CONFIG_THREAD_NAME=y`
+  steps:
+    - Create two threads (Thread A and Thread B) that access a shared resource without a mutex.
+    - Create two additional threads (Thread C and Thread D) that access the same resource with mutex protection.
+    - Each thread performs five iterations of resource updates.
+    - Observe and log shared resource values after each update.
+  expected_results:
+    - Unsafe access logs show inconsistent increments or data races.
+    - Safe access logs demonstrate consistent, orderly increments without overlap.
+    - Final `shared_resource` value matches the total expected increments (20 if all accesses are accounted for).
+  additional_notes:
+    - Vary thread priorities to observe priority inversion effects.
+    - Increase `ITERATIONS` to stress-test concurrency handling.
+    - Use logging timestamps to analyze timing of resource access.
