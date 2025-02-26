@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def context_switching_test(setup_fixture):
     """Test to validate context switching time from Zephyr RTOS output."""
     output_file_path = "Tests/Outputs/Output_files/TZR003.txt"
     logger.info(f"Reading output file: {output_file_path}")
