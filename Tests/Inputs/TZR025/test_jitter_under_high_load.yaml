@@ -1,0 +1,29 @@
+test:
+  name: Jitter Measurement Under High System Load
+  id: TZR025
+  description: |
+    Measure task jitter in Zephyr RTOS under high system load conditions.
+    This test runs a high-priority jitter measurement task and a low-priority CPU load task.
+    It evaluates how system load impacts the scheduling precision of periodic tasks.
+  type: performance
+  category: Task Scheduling and Timing
+  prerequisites:
+    - Timeslicing and clock configurations enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_MAIN_STACK_SIZE=2048`
+      - `CONFIG_TIMESLICING=y`
+      - `CONFIG_SYS_CLOCK_TICKS_PER_SEC=1000`
+      - `CONFIG_PRINTK=y`
+  steps:
+    - Launch a jitter task with a 1000 ms period to record scheduled vs. actual start times.
+    - Start a load task with frequent CPU usage to simulate high system load.
+    - Log jitter measurements each cycle and monitor changes under load.
+  expected_results:
+    - Jitter remains minimal in low-load conditions.
+    - High system load causes noticeable jitter but within acceptable ranges.
+    - No missed periods or excessive delays occur.
+  additional_notes:
+    - Adjust `LOAD_ITERATIONS` and `LOAD_TASK_PERIOD_MS` to vary system load.
+    - Modify `JITTER_TASK_PRIORITY` to observe priority-based scheduling impacts.
+    - Long-term testing helps identify cumulative jitter effects.
