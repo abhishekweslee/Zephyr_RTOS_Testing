@@ -1,0 +1,28 @@
+test:
+  name: Mutex Handling with Priority Inheritance
+  id: TZR008
+  description: |
+    Verify mutex handling and priority inheritance in Zephyr RTOS. This test demonstrates priority inversion
+    and ensures that high-priority tasks are not blocked indefinitely when a low-priority task holds a mutex.
+  type: functional
+  category: Inter-task Communication
+  prerequisites:
+    - Mutex support enabled.
+    - Logging and serial output configured.
+  setup:
+    - Enable `CONFIG_PRINTK=y`, `CONFIG_SERIAL=y`, and `CONFIG_LOG=y`.
+    - Define and initialize a mutex.
+  steps:
+    - Start three threads: LOW, MEDIUM, and HIGH priorities.
+    - Low-priority thread acquires the mutex first.
+    - High-priority thread attempts to acquire the mutex while it's held by the low-priority thread.
+    - Medium-priority thread runs concurrently, potentially causing priority inversion.
+    - Observe if priority inheritance allows the low-priority thread to finish promptly.
+  expected_results:
+    - "Mutex Test: Started" appears at the start.
+    - Low-priority thread acquires and releases the mutex as expected.
+    - High-priority thread is not blocked for longer than necessary.
+    - Priority inheritance prevents medium-priority thread from causing excessive delay.
+  additional_notes:
+    - Enable `CONFIG_MUTEX_PRIORITY_INHERITANCE=y` to mitigate inversion effects.
+    - Observe behavior differences with and without priority inheritance enabled.
