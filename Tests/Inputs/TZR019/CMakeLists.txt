@@ -1,4 +1,4 @@
 cmake_minimum_required(VERSION 3.20.0)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(sleep_delay_test)
+project(test_sleep_delay_accuracy)
 target_sources(app PRIVATE src/main.c)
