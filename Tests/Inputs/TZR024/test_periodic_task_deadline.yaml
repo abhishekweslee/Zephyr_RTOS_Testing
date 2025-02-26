@@ -1,0 +1,36 @@
+test:
+  name: Periodic Task Deadline Adherence
+  id: TZR024
+  description: |
+    Verify the ability of a periodic task to meet its deadlines in Zephyr RTOS.
+    This test measures the jitter between expected and actual task start times and detects any deadline misses.
+  type: performance
+  category: Task Scheduling and Timing
+  prerequisites:
+    - Timing functions and console logging enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_CONSOLE=y`
+      - `CONFIG_UART_CONSOLE=y`
+      - `CONFIG_TIMING_FUNCTIONS=y`
+      - `CONFIG_SYS_CLOCK_EXISTS=y`
+      - `CONFIG_SYS_CLOCK_TICKS_PER_SEC=1000`
+      - `CONFIG_THREAD_MONITOR=y`
+      - `CONFIG_THREAD_NAME=y`
+      - `CONFIG_LOG=y`
+      - `CONFIG_LOG_MODE_DEFERRED=y`
+      - `CONFIG_LOG_DEFAULT_LEVEL=3`
+  steps:
+    - Start a periodic task with a 1000 ms period.
+    - Log the actual start time and calculate jitter from the expected wake-up time.
+    - Simulate task execution workload (200 ms duration).
+    - Sleep until the next period and check for deadline misses.
+  expected_results:
+    - Logs display jitter values close to 0 ms under normal conditions.
+    - "Missed deadline" messages occur only under system stress or overload.
+    - Execution time remains consistent across iterations.
+  additional_notes:
+    - Adjust `PERIOD_MS` and workload duration to test system limits.
+    - Introduce higher-priority tasks to analyze preemption effects.
+    - Use external monitoring tools for precise timing validation.
