@@ -1,0 +1,26 @@
+test:
+  name: Context Switching Time
+  id: TZR003
+  description: |
+    Validate the context switching time between tasks with different priorities in Zephyr RTOS.
+    This test measures the time taken to switch context from one task to another and ensures it falls within acceptable thresholds.
+  type: performance
+  category: Task Management
+  prerequisites:
+    - Zephyr RTOS with multithreading enabled.
+    - Logging and thread naming configured.
+  setup:
+    - Enable logging with appropriate log level.
+    - Ensure `CONFIG_MULTITHREADING=y` and `CONFIG_THREAD_NAME=y` are set.
+  steps:
+    - Create three tasks with HIGH, MEDIUM, and LOW priorities.
+    - Measure the cycle count before and after task execution to determine context switch time.
+    - Log the measured context switch times.
+  expected_results:
+    - "Starting Context Switching Test..." log message appears.
+    - High, medium, and low priority tasks execute and log their activity.
+    - Context switch times are consistently logged with measured cycle counts.
+    - Measured times fall within acceptable performance thresholds.
+  additional_notes:
+    - Repeat the test under varying system loads to observe consistency.
+    - Analyze outliers and ensure no significant deviations occur.
