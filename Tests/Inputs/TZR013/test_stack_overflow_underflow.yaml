@@ -1,0 +1,32 @@
+test:
+  name: Stack Overflow and Underflow
+  id: TZR013
+  description: |
+    Verify the system's ability to detect and handle stack overflow and underflow conditions in Zephyr RTOS.
+    This test intentionally causes overflow by exceeding allocated stack size and underflow by manipulating the stack pointer.
+  type: functional
+  category: Memory Management
+  prerequisites:
+    - Stack protection and assertion features enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_TEST=y`
+      - `CONFIG_THREAD_MONITOR=y`
+      - `CONFIG_ASSERT=y`
+      - `CONFIG_HW_STACK_PROTECTION=y`
+      - `CONFIG_STACK_CANARIES=y`
+      - `CONFIG_STACK_SENTINEL=y`
+      - `CONFIG_NO_OPTIMIZATIONS=y`
+  steps:
+    - Start the stack overflow test by creating a thread with a small stack and exceeding its limit.
+    - Start the stack underflow test by modifying the stack pointer to an invalid address.
+    - Observe system response to both scenarios.
+  expected_results:
+    - System detects the stack overflow and prevents further execution.
+    - Overflow attempt logs appropriate protection or fault messages.
+    - Underflow triggers an assertion failure or fault detection mechanism.
+    - "This should never print!" messages do not appear in logs.
+  additional_notes:
+    - Stack protection may reset or halt the system depending on hardware and configuration.
+    - Test can be repeated with varying stack sizes for stress testing.
+    - Ensure fault handlers are configured to capture exceptions for debugging.
