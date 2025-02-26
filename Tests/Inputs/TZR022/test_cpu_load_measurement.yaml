@@ -1,0 +1,29 @@
+test:
+  name: CPU Load Measurement
+  id: TZR022
+  description: |
+    Measure CPU load and task execution time in Zephyr RTOS. This test runs two load-generating tasks
+    and a monitor task that periodically prints CPU usage based on runtime statistics.
+  type: performance
+  category: System Monitoring
+  prerequisites:
+    - Thread runtime statistics and timing functions enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_THREAD_RUNTIME_STATS=y`
+      - `CONFIG_THREAD_RUNTIME_STATS_USE_TIMING_FUNCTIONS=y`
+      - `CONFIG_TIMING_FUNCTIONS=y`
+      - `CONFIG_PRINTK=y`
+  steps:
+    - Start two load tasks that generate CPU load via busy loops.
+    - Launch a monitor task with higher priority to capture CPU usage.
+    - Monitor prints execution cycles every 1000 ms.
+  expected_results:
+    - System boots and load tasks start consuming CPU resources.
+    - Monitor task prints "CPU Usage: <cycles>" logs at regular intervals.
+    - CPU usage increases under load and stabilizes over time.
+    - No missed or delayed monitor logs occur.
+  additional_notes:
+    - Adjust the number of load tasks to simulate different load conditions.
+    - Change `MONITOR_INTERVAL_MS` for more frequent or less frequent monitoring.
+    - Ensure sufficient stack sizes to prevent overflows.
