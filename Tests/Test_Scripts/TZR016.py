@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def isr_deadlock_detection(setup_fixture):
     """Test to ensure ISR does not block indefinitely or cause a deadlock."""
     output_file_path = "Tests/Outputs/Output_files/TZR016.txt"
     logger.info(f"Reading output file: {output_file_path}")
