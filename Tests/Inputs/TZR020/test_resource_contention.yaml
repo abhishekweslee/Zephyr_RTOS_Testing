@@ -1,0 +1,28 @@
+test:
+  name: Resource Contention Simulation
+  id: TZR020
+  description: |
+    Verify proper synchronization and mutual exclusion when multiple threads access a shared resource.
+    This test simulates contention between two threads trying to access a resource protected by a mutex.
+  type: functional
+  category: Synchronization
+  prerequisites:
+    - Threading and mutex support enabled in Zephyr.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_THREAD_MONITOR=y`
+  steps:
+    - Create two threads with equal priority.
+    - Both threads repeatedly attempt to acquire the same mutex.
+    - Each thread holds the resource for 1000 ms upon acquisition.
+    - Threads log access attempts, acquisitions, and releases.
+  expected_results:
+    - "Starting Resource Contention Simulation..." appears at startup.
+    - Only one thread accesses the resource at a time.
+    - Logs show orderly acquisition and release without overlap.
+    - No deadlocks or race conditions occur.
+  additional_notes:
+    - Modify sleep durations to test different contention scenarios.
+    - Increase the number of threads to evaluate system scalability.
+    - Enable priority inheritance if priority inversion is observed.
