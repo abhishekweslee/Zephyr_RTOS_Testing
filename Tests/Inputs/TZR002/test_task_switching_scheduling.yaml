@@ -1,0 +1,26 @@
+test:
+  name: Task Switching and Scheduling Policies
+  id: TZR002
+  description: |
+    Test task switching and scheduling policies in Zephyr RTOS, including Round-Robin and Priority-based scheduling.
+    This test creates three tasks with HIGH, MEDIUM, and LOW priorities, demonstrating the system's scheduling behavior.
+  type: functional
+  category: Task Management
+  prerequisites:
+    - Multiple tasks configured with different priorities.
+    - Timeslicing and multi-queue scheduling enabled.
+  setup:
+    - Enable printing and logging support.
+    - Configure scheduler with timeslicing and priority settings.
+  steps:
+    - Observe log outputs to verify proper task switching.
+    - Confirm high-priority tasks preempt lower-priority ones.
+    - Validate Round-Robin behavior among same-priority tasks.
+  expected_results:
+    - "Starting Task Scheduling Test..." message appears.
+    - High priority task runs more frequently or preempts others.
+    - Tasks with equal priority share CPU time in a round-robin fashion.
+    - Logs consistently show task switching in line with scheduling policies.
+  additional_notes:
+    - Test edge-case priority values and varying timeslice sizes.
+    - Verify no starvation occurs for lower-priority tasks.
