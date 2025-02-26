@@ -1,4 +1,4 @@
-*** Booting Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS
 [00:00:00.000,000] <inf> semaphore_test: Semaphore Test: Started
 [00:00:00.000,000] <inf> semaphore_test: Thread A: Attempting to acquire semaphore
 [00:00:00.000,000] <inf> semaphore_test: Thread A: Acquired semaphore

@@ -1,4 +1,4 @@
-*** Booting Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS
 Starting Concurrent Access Test...
 Unsafe: Thread A updated shared_resource to 1
 Unsafe: Thread B updated shared_resource to 1

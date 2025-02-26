@@ -1,4 +1,5 @@
-g Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS build 4.1.0-rc2 ***
 Starting ISR deadlock test...
 Triggering software interrupt...
 ISR executed!
+Test passed: ISR executed without deadlock.

@@ -1,8 +1,4 @@
-[00:00:12.002,000] <inf> context_switch: Context switch time: 42007612 cycles
-[00:00:12.002,000] <inf> context_switch: High Priority Task Running
-[00:00:12.002,000] <inf> context_switch: Medium Priority Task Running
-[00:00:12.002,000] <inf> context_switch: Low Priority Task Running
-[00:00:12.502,000] <inf> context_switch: Context switch time: 42007578 cycle*** Booting Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS build 4.1.0-rc2 ***
 [00:00:00.000,000] <inf> task_state_demo: Starting Task State Transition Test...
 [00:00:00.000,000] <inf> task_state_demo: High Priority Task: READY state
 [00:00:00.000,000] <inf> task_state_demo: High Priority Task: RUNNING state

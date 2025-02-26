@@ -1,4 +1,3 @@
-*** Booting Zephyr OS build 4.1.0-rc2 ***
 *** Booting Zephyr OS ***
 CPU Usage: 163 cycles
 CPU Usage: 166373 cycles

@@ -1,4 +1,4 @@
-*** Booting Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS
 Mutex Test: Started
 [Medium] Running
 [Low] Attempting to acquire mutex
