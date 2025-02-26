@@ -1,0 +1,27 @@
+test:
+  name: Sleep & Delay Accuracy
+  id: TZR019
+  description: |
+    Verify the accuracy of `k_sleep()` and `k_busy_wait()` timing functions in Zephyr RTOS.
+    This test measures the actual elapsed time during sleep and busy-wait operations and compares it to the expected durations.
+  type: performance
+  category: Timing and Delays
+  prerequisites:
+    - Serial and printing functionalities enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_SERIAL=y`
+  steps:
+    - Measure the accuracy of `k_sleep()` with a 1000 ms delay.
+    - Measure the accuracy of `k_busy_wait()` with a 500000 µs delay.
+    - Compare the actual elapsed times with the expected values.
+  expected_results:
+    - "Starting Sleep & Delay Accuracy Test..." appears at startup.
+    - Actual sleep duration is within acceptable deviation from 1000 ms.
+    - Actual busy-wait duration closely matches the 500000 µs target.
+    - No significant timing discrepancies are observed.
+  additional_notes:
+    - Test under different CPU loads to assess the impact on timing accuracy.
+    - Adjust delay durations to explore timing behavior across various intervals.
+    - Consider hardware timer calibration for improved precision.
