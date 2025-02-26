@@ -1,0 +1,29 @@
+test:
+  name: Task State Transitions
+  id: TZR004
+  description: |
+    Ensure correct task state transitions (READY, RUNNING, BLOCKED, SUSPENDED) in Zephyr RTOS.
+    This test creates three tasks with different priorities and demonstrates transitions using
+    semaphores and thread suspension/resumption.
+  type: functional
+  category: Task Management
+  prerequisites:
+    - Multithreading and semaphore support enabled.
+    - Logging and thread naming configured.
+  setup:
+    - Enable `CONFIG_MULTITHREADING=y`, `CONFIG_SEMAPHORE=y`, and `CONFIG_THREAD_NAME=y`.
+    - Set logging level to default (`CONFIG_LOG_DEFAULT_LEVEL=3`).
+  steps:
+    - Observe initial task states (READY).
+    - Verify transitions to RUNNING state upon execution.
+    - Confirm medium priority task enters BLOCKED state while waiting on semaphore.
+    - Suspend and resume medium priority task; validate corresponding state changes.
+    - Release semaphore and ensure blocked task transitions to RUNNING.
+  expected_results:
+    - "Starting Task State Transition Test..." log message appears.
+    - Tasks display READY, RUNNING, BLOCKED, and SUSPENDED states as expected.
+    - Medium priority task unblocks after semaphore release.
+    - Logs show correct suspend and resume actions.
+  additional_notes:
+    - Test edge cases by delaying semaphore release and observing blocked state duration.
+    - Monitor logs to verify state consistency across multiple cycles.
