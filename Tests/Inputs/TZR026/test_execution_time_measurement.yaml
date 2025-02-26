@@ -1,0 +1,31 @@
+test:
+  name: Code Execution Time Measurement
+  id: TZR026
+  description: |
+    Measure the execution time of a code block using CPU cycle counters in Zephyr RTOS.
+    This test records start and end cycles around a simulated workload and converts the result to nanoseconds.
+  type: performance
+  category: Timing and Profiling
+  prerequisites:
+    - Timing functions and CPU cycle counters enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_THREAD_MONITOR=y`
+      - `CONFIG_THREAD_RUNTIME_STATS=y`
+      - `CONFIG_TIMESLICING=y`
+      - `CONFIG_SCHED_THREAD_USAGE=y`
+      - `CONFIG_THREAD_ANALYZER=y`
+      - `CONFIG_TIMING_FUNCTIONS=y`
+  steps:
+    - Capture the cycle count before the code block using `k_cycle_get_32()`.
+    - Execute the workload (a loop with 100000 iterations).
+    - Capture the cycle count after execution.
+    - Calculate and log the elapsed cycles and the converted time in nanoseconds.
+  expected_results:
+    - "Starting execution time measurement..." appears at startup.
+    - Elapsed cycles and corresponding nanoseconds are logged.
+    - Results show consistent timing across multiple runs under stable conditions.
+  additional_notes:
+    - Modify the loop iterations to test different workload durations.
+    - Run under system load to assess timing variability.
+    - Use higher-resolution counters if available for increased accuracy.
