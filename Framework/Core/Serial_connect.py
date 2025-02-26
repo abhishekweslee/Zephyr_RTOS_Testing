@@ -7,7 +7,6 @@ import subprocess
 import select
 
 
-
 class SerialReader:
     def __init__(self, serial_port="/dev/ttyACM4", baud_rate=115200, output_file="Master_output.txt", logger=None,
                  timeout=5):
@@ -25,10 +24,17 @@ class SerialReader:
     def _configure_serial_port(self):
         """Configures the serial port settings using `stty`."""
         try:
+            if not os.path.exists(self.serial_port):
+                raise FileNotFoundError(f"Serial port {self.serial_port} not found.")
+
             subprocess.run(["stty", "-F", self.serial_port, str(self.baud_rate)], check=True)
             self.logger.info(f"[INFO] Serial port {self.serial_port} configured with baud rate {self.baud_rate}.")
+        except FileNotFoundError as e:
+            self.logger.error(f"[ERROR] {e}")
         except subprocess.CalledProcessError as e:
             self.logger.error(f"[ERROR] Failed to configure serial port: {e}")
+        except Exception as e:
+            self.logger.error(f"[ERROR] Unexpected error in configuring serial port: {e}")
 
     def _remove_ansi_escape(self, text):
         """Removes ANSI escape codes from the input text."""
@@ -43,22 +49,29 @@ class SerialReader:
 
                 last_read_time = time.time()
                 while self.running:
-                    fds, _, _ = select.select([f], [], [], self.timeout)  # Non-blocking check
-                    if fds:
-                        data = f.readline().decode(errors="ignore").strip()
-                        if data:
-                            clean_data = self._remove_ansi_escape(data)
-                            print(clean_data)
-                            out_f.write(clean_data + "\n")
-                            out_f.flush()
-                            last_read_time = time.time()
+                    try:
+                        fds, _, _ = select.select([f], [], [], self.timeout)  # Non-blocking check
+                        if fds:
+                            data = f.readline().decode(errors="ignore").strip()
+                            if data:
+                                clean_data = self._remove_ansi_escape(data)
+                                print(clean_data)
+                                out_f.write(clean_data + "\n")
+                                out_f.flush()
+                                last_read_time = time.time()
+                    except Exception as e:
+                        self.logger.error(f"[ERROR] Serial read error: {e}")
+                        break
 
                     # Stop if no data received for `timeout` seconds
                     if time.time() - last_read_time > self.timeout:
                         self.logger.warning("[WARNING] No new data received. Stopping serial reader.")
                         self.running = False
                         break
-
+        except FileNotFoundError:
+            self.logger.error(f"[ERROR] Serial port {self.serial_port} not found.")
+        except PermissionError:
+            self.logger.error(f"[ERROR] Permission denied for {self.serial_port}. Try running as root.")
         except Exception as e:
             self.logger.error(f"[ERROR] {e}")
         finally:
@@ -67,25 +80,29 @@ class SerialReader:
     def start_reading(self):
         """Starts the serial data reading process."""
         if not self.running:
-            self.logger.info("[INFO] Starting serial data collection...")
-            self.running = True
-            self.thread = threading.Thread(target=self._read_serial, daemon=True)
-            self.thread.start()
+            try:
+                self.logger.info("[INFO] Starting serial data collection...")
+                self.running = True
+                self.thread = threading.Thread(target=self._read_serial, daemon=True)
+                self.thread.start()
+            except Exception as e:
+                self.logger.error(f"[ERROR] Failed to start thread: {e}")
         else:
             self.logger.warning("[WARNING] Already running!")
 
     def stop_reading(self):
         """Stops the serial data reading process."""
         if self.running:
-            self.logger.info("[INFO] Stopping serial data collection...")
-            self.running = False
-            if self.thread:
-                self.thread.join()
-            self.logger.info(f"[INFO] Data saved to: {self.output_file}")
+            try:
+                self.logger.info("[INFO] Stopping serial data collection...")
+                self.running = False
+                if self.thread:
+                    self.thread.join()
+                self.logger.info(f"[INFO] Data saved to: {self.output_file}")
+            except Exception as e:
+                self.logger.error(f"[ERROR] Failed to stop thread: {e}")
         else:
             self.logger.warning("[WARNING] Not currently running!")
-
-        print("stoped============")
 
 
 # Usage example:

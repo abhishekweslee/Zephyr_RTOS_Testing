@@ -82,21 +82,6 @@ class Builder:
         if "Flash written and verified! jolly good!" in output:
             self.logger.info("Firmware flashed successfully!")
             return True
-        else:
-            self.logger.warning("Firmware flash verification failed. Retrying once...")
-
-            # Retry flashing
-            output, _, returncode = self.run_command(command)
-
-            # Print retry output for debugging
-            print(f"Retry flash attempt output:\n{output}")
-
-            if "Flash written and verified! jolly good!" in output:
-                self.logger.info("Firmware flashed successfully on retry!")
-                return True
-            else:
-                self.logger.error("Firmware flash failed after retry.")
-                return False
 
     def reset_board(self):
         try:

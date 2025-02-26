@@ -14,6 +14,7 @@ class FolderManager:
         self.source_folder = source_folder
         self.destination_folder = destination_folder
 
+
     def copy_folder(self):
         """
         Copies the source folder to the destination with error handling.
