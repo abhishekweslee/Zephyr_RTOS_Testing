@@ -9,6 +9,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".
 from Framework.Core.Serial_connect import SerialReader
 from Framework.Core.folder_manager import FolderManager
 from Framework.Core.Builder import Builder
+from Framework.Core.Output_processer import ZephyrLogProcessor
 
 
 class TestSetup:
@@ -36,7 +37,7 @@ class TestSetup:
         time.sleep(5)
 
         self.SC = SerialReader(
-            serial_port="/dev/ttyACM4",
+            serial_port="/dev/ttyACM0",
             output_file=f"Tests/Outputs/Output_files/{file_name}.txt",
             baud_rate=115200,
             logger=self.logger
@@ -49,6 +50,9 @@ class TestSetup:
         time.sleep(10)
 
         self.SC.stop_reading()
+
+        self.processor = ZephyrLogProcessor()
+        self.processor.extract_from_last_boot(file_path=f"Tests/Outputs/Output_files/{file_name}.txt")
 
     def cleanup(self):
         """Cleanup after the test execution."""
