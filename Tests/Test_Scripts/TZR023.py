@@ -19,12 +19,12 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case_1(setup_fixture):
+def task_execution_time_profiling(setup_fixture):
     """Test task execution time profiling under varying system conditions."""
     output_file_path = "Tests/Outputs/Output_files/TZR023.txt"
     logger.info(f"Reading output file: {output_file_path}")
 
-    # ✅ Read the output file
+    # Read the output file
     try:
         with open(output_file_path, "r") as file:
             output_text = file.read()
@@ -33,18 +33,18 @@ def test_case_1(setup_fixture):
         logger.error(f"Output file not found at: {output_file_path}")
         pytest.fail(f"Output file not found at: {output_file_path}")
 
-    # ✅ Verify Zephyr boot message
+    # Verify Zephyr boot message
     assert "*** Booting Zephyr OS: Task Execution Profiling ***" in output_text, \
         "Zephyr OS boot message not found."
     logger.info("Verified Zephyr OS boot message.")
 
-    # ✅ Verify monitor task status messages
+    # Verify monitor task status messages
     monitor_pattern = r"\[Monitor\] System running\.\.\."
     monitor_messages = re.findall(monitor_pattern, output_text)
     assert len(monitor_messages) >= 1, "Monitor task messages not found."
     logger.info(f"Found {len(monitor_messages)} monitor task status messages.")
 
-    # ✅ Extract execution times for each task
+    # Extract execution times for each task
     task_patterns = {
         "High Load Task": r"High Load Task executed in (\d+) cycles",
         "Medium Load Task": r"Medium Load Task executed in (\d+) cycles",
@@ -58,7 +58,7 @@ def test_case_1(setup_fixture):
         task_execution_times[task_name] = cycles
         logger.info(f"{task_name} execution times: {cycles}")
 
-    # ✅ Verify execution times are consistent (small variance)
+    # Verify execution times are consistent (small variance)
     for task_name, cycles in task_execution_times.items():
         mean = sum(cycles) / len(cycles)
         max_deviation = max(abs(cycle - mean) for cycle in cycles)
@@ -67,7 +67,7 @@ def test_case_1(setup_fixture):
             f"{task_name} execution times vary beyond acceptable range."
         logger.info(f"{task_name} execution times within acceptable variance.")
 
-    # ✅ Verify execution order (High Load > Medium Load > Low Load)
+    # Verify execution order (High Load > Medium Load > Low Load)
     for high, medium, low in zip(
         task_execution_times["High Load Task"],
         task_execution_times["Medium Load Task"],
