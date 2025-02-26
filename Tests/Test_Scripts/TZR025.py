@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_jitter_under_high_load(setup_fixture):
+def jitter_measurement_under_high_load(setup_fixture):
     """Test to validate high, medium, and low load task execution times under high system load."""
     output_file_path = "Tests/Outputs/Output_files/TZR025.txt"
     logger.info(f"Reading output file: {output_file_path}")
