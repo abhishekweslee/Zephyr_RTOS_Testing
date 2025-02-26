@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def timer_precision_validation(setup_fixture):
     """Test to validate the precision of periodic and one-shot timers."""
     output_file_path = "Tests/Outputs/Output_files/TZR018.txt"
     logger.info(f"Reading output file: {output_file_path}")
