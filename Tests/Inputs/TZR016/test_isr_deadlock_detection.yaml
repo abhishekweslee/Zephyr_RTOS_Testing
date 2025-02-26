@@ -1,0 +1,32 @@
+test:
+  name: ISR Deadlock Detection
+  id: TZR016
+  description: |
+    Verify that the system handles ISR execution without deadlocks in Zephyr RTOS.
+    This test simulates an interrupt using `irq_offload` and ensures the ISR executes as expected.
+  type: functional
+  category: Interrupt Handling
+  prerequisites:
+    - Software interrupt offloading supported.
+    - Timing and assertion features enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_TEST=y`
+      - `CONFIG_ASSERT=y`
+      - `CONFIG_IRQ_OFFLOAD=y`
+      - `CONFIG_TIMESLICING=y`
+      - `CONFIG_SYS_CLOCK_TICKS_PER_SEC=1000`
+      - `CONFIG_USERSPACE=n`
+  steps:
+    - Trigger a software interrupt using `irq_offload`.
+    - Wait for ISR execution within the defined duration.
+    - Verify that the ISR runs without causing a deadlock.
+  expected_results:
+    - "Starting ISR deadlock test..." and "Triggering software interrupt..." logs appear.
+    - ISR executes and logs "ISR executed!".
+    - Test passes if ISR executes within the test duration.
+    - If the ISR does not execute, the test fails indicating potential deadlock.
+  additional_notes:
+    - Increase `TEST_DURATION` for edge-case timing validations.
+    - Test under heavy CPU loads to assess ISR responsiveness.
+    - Ensure that no resource locks are held indefinitely within the ISR.
