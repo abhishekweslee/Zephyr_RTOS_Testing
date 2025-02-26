@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def test_case(setup_fixture):
+def isr_execution_time_test(setup_fixture):
     """Verify the execution time of the ISR (Interrupt Service Routine)."""
     output_file_path = "Tests/Outputs/Output_files/TZR014.txt"
     logger.info(f"Reading output file: {output_file_path}")
