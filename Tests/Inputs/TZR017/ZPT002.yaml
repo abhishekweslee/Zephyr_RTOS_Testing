@@ -1,6 +1,31 @@
-manifest:
-  projects:
-    - name: zephyr
-      url: https://github.com/zephyrproject-rtos/zephyr.git
-      revision: main
-      import: true
+test:
+  name: Timer Creation, Deletion & Expiry
+  id: TZR017
+  description: |
+    Verify the correct creation, expiration, and deletion of timers in Zephyr RTOS.
+    This test initializes a timer, starts it in one-shot mode with periodic intervals,
+    validates the expiry callback execution, and ensures proper timer stopping.
+  type: functional
+  category: Timer Management
+  prerequisites:
+    - Timer support enabled in Zephyr configuration.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_SERIAL=y`
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_TIMER=y`
+  steps:
+    - Initialize the timer with expiry and stop callbacks.
+    - Start the timer with a 1000 ms timeout and 500 ms periodic interval.
+    - Wait for the timer to expire and verify callback execution.
+    - Stop and delete the timer.
+  expected_results:
+    - "Starting Timer Creation, Deletion & Expiry Test..." appears at startup.
+    - Timer initializes and starts successfully with correct timeout and period logs.
+    - "Timer expired! Callback executed." appears after the set duration.
+    - "Test Passed: Timer expired as expected." confirms successful expiry.
+    - Timer stops without issues and logs appropriate messages.
+  additional_notes:
+    - Test with different timeouts and periods to validate versatility.
+    - Use high-resolution timing for precise expiry validation.
+    - Monitor system behavior for timer-related resource leaks.
