@@ -1,0 +1,25 @@
+test:
+  name: Event Flags Signalling
+  id: TZR009
+  description: |
+    Validate the correct usage of event flags in Zephyr RTOS for task synchronization.
+    This test includes an event producer and consumer, demonstrating flag setting and waiting mechanisms.
+  type: functional
+  category: Inter-task Communication
+  prerequisites:
+    - Event support enabled.
+    - Logging or printing configured.
+  setup:
+    - Enable `CONFIG_PRINTK=y` and `CONFIG_EVENTS=y`.
+    - Initialize event structures before usage.
+  steps:
+    - Start producer and consumer threads.
+    - Producer sets `EVENT_FLAG_1` and `EVENT_FLAG_2` with delays between them.
+    - Consumer waits for each flag and logs reception.
+  expected_results:
+    - Consumer logs "Waiting for EVENT_FLAG_1..." and later "Received EVENT_FLAG_1" after the producer sets it.
+    - Similar behavior observed for `EVENT_FLAG_2`.
+    - Flags are received accurately with correct bit values.
+  additional_notes:
+    - Test with multiple consumers to verify flag broadcasting.
+    - Modify delays to observe timing effects on synchronization.
