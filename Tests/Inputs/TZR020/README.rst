@@ -1,28 +1,46 @@
-test:
-  name: Resource Contention Simulation
-  id: TZR020
-  description: |
-    Verify proper synchronization and mutual exclusion when multiple threads access a shared resource.
-    This test simulates contention between two threads trying to access a resource protected by a mutex.
-  type: functional
-  category: Synchronization
-  prerequisites:
-    - Threading and mutex support enabled in Zephyr.
-  setup:
-    - Enable the following configurations:
-      - `CONFIG_PRINTK=y`
-      - `CONFIG_THREAD_MONITOR=y`
-  steps:
-    - Create two threads with equal priority.
-    - Both threads repeatedly attempt to acquire the same mutex.
-    - Each thread holds the resource for 1000 ms upon acquisition.
-    - Threads log access attempts, acquisitions, and releases.
-  expected_results:
-    - "Starting Resource Contention Simulation..." appears at startup.
-    - Only one thread accesses the resource at a time.
-    - Logs show orderly acquisition and release without overlap.
-    - No deadlocks or race conditions occur.
-  additional_notes:
-    - Modify sleep durations to test different contention scenarios.
-    - Increase the number of threads to evaluate system scalability.
-    - Enable priority inheritance if priority inversion is observed.
+=====================================
+Resource Contention Simulation
+=====================================
+
+**Test Case ID:** TZR020  
+**Category:** Synchronization  
+
+Overview
+--------
+This test simulates resource contention between two threads accessing a shared resource protected by a mutex.
+It ensures proper synchronization and verifies that mutual exclusion is maintained.
+
+Key aspects tested:
+- Mutex-based resource protection
+- Prevention of simultaneous resource access
+- Proper logging of thread access sequences
+
+Prerequisites
+-------------
+- Threading support enabled (`CONFIG_THREAD_MONITOR=y`)
+- Serial output enabled (`CONFIG_PRINTK=y`)
+
+Expected Output
+---------------
+- Threads wait to acquire the resource without overlapping usage.
+- Access and release logs follow a consistent sequence.
+- No simultaneous resource access or deadlocks occur.
+
+Sample Log
+----------
+.. code-block:: console
+
+   Starting Resource Contention Simulation...
+   Thread A: Waiting to acquire resource...
+   Thread A: Acquired resource, working...
+   Thread B: Waiting to acquire resource...
+   Thread A: Releasing resource.
+   Thread B: Acquired resource, working...
+   Thread A: Waiting to acquire resource...
+   Thread B: Releasing resource.
+
+Additional Notes
+----------------
+- Adjust the thread delays to increase or reduce contention frequency.
+- Add additional threads to observe behavior under high contention.
+- Use priority settings to analyze priority inversion scenarios.
