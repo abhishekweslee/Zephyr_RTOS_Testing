@@ -1,0 +1,29 @@
+test:
+  name: Dynamic Memory Allocation
+  id: TZR010
+  description: |
+    Verify the functionality of dynamic memory allocation in Zephyr RTOS using `k_malloc` and `k_free`.
+    This test allocates memory, writes and verifies data, and ensures proper deallocation.
+  type: functional
+  category: Memory Management
+  prerequisites:
+    - Heap memory pool configured.
+    - Malloc and free support enabled.
+  setup:
+    - Enable `CONFIG_HEAP_MEM_POOL_SIZE=1024`.
+    - Enable standard library memory functions (`CONFIG_NEWLIB_LIBC=y`).
+    - Set aligned heap size (`CONFIG_NEWLIB_LIBC_ALIGNED_HEAP_SIZE=1024`).
+  steps:
+    - Allocate 64 bytes of memory using `k_malloc`.
+    - Write incremental data to the allocated block.
+    - Read back and verify data integrity.
+    - Free the allocated memory with `k_free`.
+  expected_results:
+    - "Testing dynamic memory allocation..." log appears.
+    - Memory allocation succeeds with valid address logging.
+    - Data verification passes with no corruption detected.
+    - Memory is freed successfully without leaks.
+  additional_notes:
+    - Test varying allocation sizes to observe heap usage.
+    - Check behavior when allocation exceeds available heap.
+    - Use memory analysis tools to detect leaks or corruption.
