@@ -1,0 +1,28 @@
+test:
+  name: Semaphore Operations
+  id: TZR007
+  description: |
+    Verify semaphore acquisition and release in Zephyr RTOS. Three threads compete for a single semaphore,
+    ensuring mutual exclusion and proper synchronization.
+  type: functional
+  category: Inter-task Communication
+  prerequisites:
+    - Semaphore support enabled.
+    - Logging and serial output configured.
+  setup:
+    - Enable `CONFIG_PRINTK=y`, `CONFIG_SERIAL=y`, and `CONFIG_LOG=y`.
+    - Define and initialize semaphore with one token.
+  steps:
+    - Create three threads at the same priority.
+    - Each thread attempts to acquire the semaphore.
+    - Threads hold the semaphore for a fixed duration before releasing it.
+    - Verify that no two threads hold the semaphore simultaneously.
+  expected_results:
+    - "Semaphore Test: Started" message appears at the start.
+    - Threads log attempts to acquire the semaphore.
+    - Only one thread at a time logs successful acquisition.
+    - All threads release the semaphore before others acquire it.
+    - No deadlocks or starvation occur.
+  additional_notes:
+    - Adjust hold and wait times to test responsiveness.
+    - Increase the number of threads to observe contention effects.
