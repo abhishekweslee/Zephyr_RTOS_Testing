@@ -1,6 +1,31 @@
-manifest:
-  projects:
-    - name: zephyr
-      url: https://github.com/zephyrproject-rtos/zephyr.git
-      revision: main
-      import: true
+test:
+  name: Timer Precision Validation
+  id: TZR018
+  description: |
+    Verify the precision and accuracy of one-shot and periodic timers in Zephyr RTOS.
+    This test measures the actual expiry times against expected durations to ensure timers trigger within acceptable tolerances.
+  type: performance
+  category: Timer Management
+  prerequisites:
+    - Timer functionality enabled in Zephyr configuration.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_LOG=y`
+      - `CONFIG_TIMER=y`
+  steps:
+    - Initialize and start a one-shot timer with a 1000 ms timeout.
+    - Initialize and start a periodic timer with a 500 ms period.
+    - Measure actual expiry times using `k_uptime_get` and log deviations.
+    - Run the test for 3000 ms to observe multiple periodic expiries.
+    - Stop the periodic timer after the test duration.
+  expected_results:
+    - "Starting Timer Precision Test..." appears at startup.
+    - One-shot timer expires approximately at 1000 ms with minimal deviation.
+    - Periodic timer consistently expires every 500 ms within acceptable margins.
+    - Logs show actual vs. expected timings for both timers.
+    - Final log indicates the number of periodic triggers.
+  additional_notes:
+    - Adjust timeouts to validate timer behavior under different intervals.
+    - Test under system load to assess jitter and precision degradation.
+    - Ensure hardware clock sources are stable for accurate timing.
