@@ -1,0 +1,30 @@
+test:
+  name: Task Execution Time Profiling Under Varying Conditions
+  id: TZR023
+  description: |
+    Measure and profile the execution times of tasks with varying loads and priorities in Zephyr RTOS.
+    This test launches multiple tasks with different workload intensities and logs their execution cycles.
+  type: performance
+  category: Task Scheduling and Profiling
+  prerequisites:
+    - Thread runtime statistics and timing functions enabled.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_THREAD_RUNTIME_STATS=y`
+      - `CONFIG_THREAD_RUNTIME_STATS_USE_TIMING_FUNCTIONS=y`
+      - `CONFIG_TIMING_FUNCTIONS=y`
+      - `CONFIG_PRINTK=y`
+  steps:
+    - Create three load tasks with low, medium, and high loads.
+    - Each task executes a busy loop simulating work of varying intensities.
+    - A monitor task prints system status at regular intervals.
+    - Tasks log their execution time in cycles after each workload iteration.
+  expected_results:
+    - System boots with clear indication of profiling start.
+    - Low, medium, and high load tasks log their execution cycles consistently.
+    - Higher load tasks show significantly longer execution times.
+    - Monitor task prints system status every 2 seconds without disruption.
+  additional_notes:
+    - Adjust `LOAD_ITERATIONS` to vary workload intensities.
+    - Modify task priorities to observe preemption effects.
+    - Test under additional system load to assess scheduler behavior.
