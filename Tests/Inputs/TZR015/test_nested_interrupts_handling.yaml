@@ -1,0 +1,34 @@
+test:
+  name: Nested Interrupts Handling
+  id: TZR015
+  description: |
+    Test the handling of nested interrupts and priority-based preemption in Zephyr RTOS.
+    This test triggers a chain of five interrupts with different priorities, ensuring that higher-priority
+    interrupts preempt lower-priority ones as expected.
+  type: functional
+  category: Interrupt Handling
+  prerequisites:
+    - Hardware support for nested interrupts.
+    - Proper IRQ line configuration on the target platform.
+  setup:
+    - Enable the following configurations:
+      - `CONFIG_SERIAL=y`
+      - `CONFIG_PRINTK=y`
+      - `CONFIG_TEST=y`
+      - `CONFIG_IRQ_OFFLOAD=y`
+      - `CONFIG_ASSERT=y`
+    - Ensure IRQ lines 1 to 5 are valid and available.
+  steps:
+    - Configure and enable five interrupts (IRQ1 to IRQ5) with ascending priorities.
+    - Trigger the lowest priority interrupt (IRQ1).
+    - Each ISR triggers the next higher-priority IRQ in sequence.
+    - Verify that higher-priority ISRs preempt lower-priority ones.
+  expected_results:
+    - "Zephyr Nested IRQ Test with 5 Levels" appears at startup.
+    - Interrupts execute in ascending priority order, with IRQ5 executing last.
+    - "Nested Interrupt Test Passed: Execution order verified." is logged.
+    - No unexpected execution orders or missed interrupts occur.
+  additional_notes:
+    - Modify IRQ priorities to observe different nesting behaviors.
+    - Test with varying delays to assess preemption timing.
+    - Ensure proper stack handling to prevent overflow in nested ISRs.
