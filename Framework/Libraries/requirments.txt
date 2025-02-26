@@ -1,2 +1,14 @@
-pytest
+Jinja2
+MarkupSafe
+exceptiongroup
+iniconfig
+packaging
+pip
+pluggy
 pyserial
+pytest
+pytest-html
+pytest-metadata
+setuptools
+tomli
+wheel
