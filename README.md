@@ -121,7 +121,7 @@ This runs `setup_deps`, `setup_zephyr`, and `install_sdk` in sequence.
 ## Modifying Kconfig.zephyr
 After running the `Makefile`, you need to modify the Zephyr configuration file to enable semaphore support.
 
-Add the following lines to `Zephyr_RTOS_Test_Automation/Framework/Utils/zephyrproject/zephyr/Kconfig.zephyr`:
+Add the following lines to `Zephyr_RTOS_Testing/Framework/Utils/zephyrproject/zephyr/Kconfig.zephyr`:
 
 ```plaintext
 config SEMAPHORE
