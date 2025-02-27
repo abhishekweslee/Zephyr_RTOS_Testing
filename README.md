@@ -175,6 +175,11 @@ Sample_Zephyr_Project/
 - `src/main.c` contains the main Zephyr application logic.
 
 ## Running Tests
+
+### Note:
+
+the STM32F401re microcontroller board should be connected to the system to run tests in the running tests.
+
 ### Run All Tests
 To execute all test cases:
 ```sh
