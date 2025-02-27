@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def timer_creation_deletion_expiry(setup_fixture):
+def test_timer_creation_deletion_expiry(setup_fixture):
     """Test to validate timer creation, deletion, and expiry handling."""
     output_file_path = "Tests/Outputs/Output_files/TZR017.txt"
     logger.info(f"Reading output file: {output_file_path}")

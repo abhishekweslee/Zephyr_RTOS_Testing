@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def out_of_memory_handling_test(setup_fixture):
+def test_out_of_memory_handling(setup_fixture):
     """Check out-of-memory (OOM) handling during continuous memory allocation."""
     output_file_path = "Tests/Outputs/Output_files/TZR012.txt"
     logger.info(f"Reading output file: {output_file_path}")

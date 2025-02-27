@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def memory_fragmentation_test(setup_fixture):
+def test_memory_fragmentation(setup_fixture):
     """Validate memory fragmentation behavior during dynamic allocation."""
     output_file_path = "Tests/Outputs/Output_files/TZR011.txt"
     logger.info(f"Reading output file: {output_file_path}")

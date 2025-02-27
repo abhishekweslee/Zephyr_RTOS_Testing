@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def stack_overflow_underflow_test(setup_fixture):
+def test_stack_overflow_underflow(setup_fixture):
     """Verify stack overflow and underflow conditions are detected and handled."""
     output_file_path = "Tests/Outputs/Output_files/TZR013.txt"
     logger.info(f"Reading output file: {output_file_path}")

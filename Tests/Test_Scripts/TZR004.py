@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def task_state_transition_test(setup_fixture):
+def test_task_state_transition(setup_fixture):
     """Test correct task state transitions (Ready, Running, Blocked, Suspended)."""
     output_file_path = "Tests/Outputs/Output_files/TZR004.txt"
     logger.info(f"Reading output file: {output_file_path}")

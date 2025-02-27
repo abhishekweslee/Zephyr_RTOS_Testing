@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def task_execution_time_profiling(setup_fixture):
+def test_task_execution_time_profiling(setup_fixture):
     """Test task execution time profiling under varying system conditions."""
     output_file_path = "Tests/Outputs/Output_files/TZR023.txt"
     logger.info(f"Reading output file: {output_file_path}")

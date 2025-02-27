@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def code_execution_time_measurement(setup_fixture):
+def test_code_execution_time_measurement(setup_fixture):
     """Test to validate system performance under a high number of tasks without degradation."""
     output_file_path = "Tests/Outputs/Output_files/TZR026.txt"
     logger.info(f"Reading output file: {output_file_path}")

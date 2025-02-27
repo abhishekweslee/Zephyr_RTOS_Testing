@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def cpu_load_measurement(setup_fixture):
+def test_cpu_load_measurement(setup_fixture):
     """Test CPU usage measurement under varying task loads."""
     output_file_path = "Tests/Outputs/Output_files/TZR022.txt"
     logger.info(f"Reading output file: {output_file_path}")

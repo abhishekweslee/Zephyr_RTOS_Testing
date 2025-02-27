@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def dynamic_memory_allocation_test(setup_fixture):
+def test_dynamic_memory_allocation(setup_fixture):
     """Test dynamic memory allocation and deallocation without leaks."""
     output_file_path = "Tests/Outputs/Output_files/TZR010.txt"
     logger.info(f"Reading output file: {output_file_path}")

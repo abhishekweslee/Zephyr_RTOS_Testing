@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def message_queue_priority_test(setup_fixture):
+def test_message_queue_priority(setup_fixture):
     """Test to validate message queue handling with different priorities."""
 
     output_file = "Tests/Outputs/Output_files/TZR006.txt"

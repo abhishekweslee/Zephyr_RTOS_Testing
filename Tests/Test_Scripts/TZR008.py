@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def mutex_lock_unlock_test(setup_fixture):
+def test_mutex_lock_unlock(setup_fixture):
     """Test mutex handling with priority inheritance."""
     output_file_path = "Tests/Outputs/Output_files/TZR008.txt"
     logger.info(f"Reading output file: {output_file_path}")

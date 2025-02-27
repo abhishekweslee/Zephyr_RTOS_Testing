@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def task_scheduling_test(setup_fixture):
+def test_task_scheduling(setup_fixture):
     """Test task switching and scheduling policies."""
     output_file_path = "Tests/Outputs/Output_files/TZR002.txt"
     logger.info(f"Reading output file: {output_file_path}")

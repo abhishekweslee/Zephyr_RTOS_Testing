@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def task_starvation_priority_inversion_test(setup_fixture):
+def test_task_starvation_priority_inversion(setup_fixture):
     """Test to validate task starvation prevention and priority inversion handling."""
     output_file = "Tests/Outputs/Output_files/TZR005.txt"
     try:

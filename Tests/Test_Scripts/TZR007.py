@@ -19,7 +19,7 @@ def setup_fixture(request):
 
     setup.cleanup()  # Only deletes the folder
 
-def semaphore_synchronization_test(setup_fixture):
+def test_semaphore_synchronization(setup_fixture):
     logger.info("Starting semaphore test case.")
 
     output_file_path = "Tests/Outputs/Output_files/TZR007.txt"
