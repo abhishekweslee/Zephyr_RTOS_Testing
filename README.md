@@ -21,20 +21,40 @@ cd Zephyr_RTOS_Test_Automation
 
 ## Project Structure
 ```
-Zephyr_RTOS_Test_Automation/
-│-- Framework/
-│   │-- Utils/
-│   │   │-- zephyrproject/ (Zephyr RTOS setup directory)
-│   │-- Libraries/
-│   │   │-- requirements.txt (Python dependencies)
-│   │-- Test_Scripts/ (Contains all test scripts)
-│-- Inputs/
-│   │-- Sample_Zephyr_Project/
-│   │   │-- CMakeLists.txt
-│   │   │-- prj.conf
-│   │   │-- src/
-│-- Makefile (Automates Zephyr RTOS environment setup)
-│-- README.md (This file)
+Zephyr_RTOS_Testing/
+├── Framework/                # Core framework utilities and setup
+│   ├── Core/                 # Core Python modules for testing
+│   │   ├── Builder.py        # Handles build process
+│   │   ├── Output_processer.py # Processes output logs
+│   │   ├── Serial_connect.py # Manages serial connections
+│   │   └── folder_manager.py # Manages test output directories
+│   ├── Libraries/
+│   │   └── requirments.txt   # Python dependencies
+│   ├── Utils/
+│   │   └── Makefile          # Automated setup and build commands
+│   └── README.md             # Framework documentation
+
+├── Tests/                    # Test case structure
+│   ├── Inputs/               # Zephyr test source files
+│   │   ├── TZR001/           # Test case TZR001
+│   │   │   ├── src/main.c    # Zephyr application source
+│   │   │   ├── CMakeLists.txt # CMake build config
+│   │   │   ├── README.rst    # Test case description
+│   │   │   ├── ZPT001.yaml   # Test metadata/configuration
+│   │   │   └── prj.conf      # Zephyr-specific configurations
+│   │   ├── TZR002/ ... TZR026/ # More test cases
+│   ├── Outputs/              # Test results storage
+│   │   ├── Output_files/     # Output files per test case
+│   │   ├── logs/             # Logs for debugging
+│   │   └── report/           # Test reports (HTML format)
+│   └── Test_Scripts/         # Python test scripts
+│       ├── TZR001.py ... TZR026.py  # Individual test scripts
+│       ├── conftest.py       # pytest configuration
+│       ├── pytest.ini        # pytest setup file
+│       └── test_setup.py     # Test setup fixture
+
+└── README.md                 # Overall project documentation
+
 ```
 
 ## Setting Up Zephyr RTOS Using Makefile
@@ -170,12 +190,26 @@ pytest -s Tests/Test_Scripts/<test_script>.py
 ## Test Logs, Reports, and Output Files
 After running the tests, logs and reports are generated in the `Logs/` directory:
 ```
-Logs/
-│-- test_log_<timestamp>.log  (Detailed execution logs)
-│-- reports/
-│   │-- test_report_<timestamp>.html  (Formatted test report)
-│-- output/
-│   │-- test_output_<timestamp>.txt  (Raw test output)
+Outputs/                      
+├── Output_files/             
+│   ├── TZR001/               
+│   │   ├── output.txt        
+│   ├── TZR002/               
+│   │   ├── output.txt        
+│   ├── ...                   
+│   ├── TZR026/               
+│   │   ├── output.txt        
+│
+├── logs/                    
+│   ├── TZR001.log            
+│   ├── TZR002.log            
+│   ├── ...                   
+│   ├── TZR026.log            
+│
+└── reports/                   
+    ├── assets/               
+    │   ├── style.css       
+    └──  ── Report.html
 ```
 - **Logs** contain execution details.
 - **Reports** provide an overview of test results.
