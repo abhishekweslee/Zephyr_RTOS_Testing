@@ -1,4 +1,4 @@
-*** Booting Zephyr OS build 4.1.0-rc2 ***
+*** Booting Zephyr OS
 Starting Message Queue Priority Test
 Sender Task (Priority -1): Sent Message ID 0
 Sender Task (Priority 0): Sent Message ID 0
